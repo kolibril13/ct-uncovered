@@ -1,4 +1,4 @@
-import reactLogo from "./assets/jupiter.svg";
+import SVGPlanet from "./assets/jupiter.svg";
 import ring from "./assets/gradient-ring.svg";
 import "./App.css";
 
@@ -9,11 +9,9 @@ function App() {
         <img src={ring} className="ring" />
       </div>
 
-      <div className="containerX">
-        <img src={reactLogo} className="planetX" />
-        <div>
-          <img src={ring} className="myringX"/>
-        </div>
+      <div className="planet">
+        <img src={SVGPlanet} className="planetX" />
+        <img src={ring} className="ring" />
       </div>
     </>
   );
