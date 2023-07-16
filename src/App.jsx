@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <img src={reactLogo} className="logo react" alt="React logo" />
+      <img src={reactLogo} className="jupiter" alt="React logo" />
     </>
   );
 }

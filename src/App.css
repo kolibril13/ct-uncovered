@@ -5,13 +5,13 @@
   text-align: center;
 }
 
-.logo {
+.jupiter {
   height: 56em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
 
-.logo.react:hover {
+.jupiter.react:hover {
   filter: drop-shadow(0 0 100em #61dafbaa);
 }
