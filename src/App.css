@@ -13,7 +13,7 @@
 }
 
 .jupiter.react:hover {
-  filter: drop-shadow(0 0 100em #61dafbaa);
+  filter: drop-shadow(0 0 300em #61dafbaa);
 }
 
 /* based on https://stackoverflow.com/a/35232979/6933377 */
@@ -33,11 +33,9 @@
 .ring {
   width: 150%;
   height: 150%;
-  border: solid 10px red;
   border-radius: 50%;
   top: -25%; 
   left: -25%; 
   position: absolute;
-  transform: rotate3d(1, 0.2, 0, 75deg); 
-  box-sizing: border-box;
+  transform: rotate3d(1, 0, 0, 76deg);
 }
