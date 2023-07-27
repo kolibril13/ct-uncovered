@@ -63,3 +63,21 @@
 .ring4 {
   top: calc(-62px + 200px);
 }
+
+
+body {
+  /* Set the background image */
+  background-image: url("./assets/Hintergrund.svg");
+
+  /* Define the size of the background image */
+  /* Here, '38.2vw' means 38.2% of the viewport's width, and '100vh' means 100% of the viewport's height */
+  background-size:  100vh;
+
+  /* Define the position of the background image */
+  /* 'right top' positions the image at the top right corner of the viewport */
+  background-position: right top;
+
+  /* Define the repeat behavior of the background image */
+  /* 'no-repeat' ensures that the image does not tile */
+  background-repeat: no-repeat;
+}
