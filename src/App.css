@@ -14,6 +14,22 @@ html {
   text-align: center;
 }
 
+#background-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 59.8%; /* Since the right background takes 40.2%, the left should take the remaining space */
+  height: 100%;
+  display: flex; /* Flexbox will help us center the image */
+  align-items: center; /* Centers the image vertically */
+  justify-content: center; /* Centers the image horizontally */
+}
+
+#centered-image {
+  max-width: 60%; /* Adjust as needed */
+  max-height: 60%; /* Adjust as needed */
+}
+
 
 
 #background-right {
