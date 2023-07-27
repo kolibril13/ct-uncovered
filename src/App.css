@@ -53,9 +53,8 @@ html {
 
 .ring:hover{
   transform: rotate3d(1, 0, 0, 80deg);
+  cursor: pointer;
   opacity: 1;
-
-
 }
 
 .ring1 {
