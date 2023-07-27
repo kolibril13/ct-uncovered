@@ -1,0 +1,59 @@
+
+#background-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40.2%;
+    height: 100%;
+    background: url("./assets/Hintergrund2.svg");
+    background-blend-mode: screen;
+    background-size: cover;
+  }
+  
+  .skeleton-canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    perspective: 10000px;
+    transform-style: preserve-3d;
+  }
+  
+  .skeletonSvg {
+    width: 100%;
+  }
+  
+  .ring {
+    width: 150%;
+    height: 150%;
+    border-radius: 200%;
+    position: absolute;
+    left: -25%; 
+    transform: rotate3d(1, 0, 0, 80deg);
+    opacity: 0.3;
+  }
+  
+  .ring:hover{
+    transform: rotate3d(1, 0, 0, 80deg);
+    cursor: pointer;
+    opacity: 1;
+  }
+  
+  .ring1 {
+    top:  10%
+  }
+  
+  .ring2 {
+    top: -25%;
+  }
+  .ring3 {
+    top: -50%;
+  }
+  
+  .ring4 {
+    top: -60%;
+  }
+  
+  
+  

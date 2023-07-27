@@ -2,6 +2,7 @@
 import React from "react";
 import skeleton from "./assets/skeleton.svg";
 import ring from "./assets/gradient-ring.svg";
+import "./Skeleton.css";
 
 function Skeleton() {
   return (

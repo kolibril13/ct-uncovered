@@ -1,14 +1,16 @@
 // App.jsx
-import React from "react";
+import React, { useState } from "react";
 import Scanner from "./Scanner";
 import Skeleton from "./Skeleton";
 import "./App.css";
 
 function App() {
+  const [slices, setSlices] = useState([false, false, false, true]);
+
   return (
     <>
       <Scanner />
-      <Skeleton />
+      <Skeleton slices={slices} setSlices={setSlices} />
     </>
   );
 }
