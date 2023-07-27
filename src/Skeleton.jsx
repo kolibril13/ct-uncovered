@@ -4,7 +4,7 @@ import skeleton from "./assets/skeleton.svg";
 import ring from "./assets/gradient-ring.svg";
 import "./Skeleton.css";
 
-function Skeleton() {
+function Skeleton({slices, setSlices, level, setLevel}) {
   return (
     <div id="background-right">
       <div className="skeleton-canvas">

@@ -6,11 +6,11 @@ import "./App.css";
 
 function App() {
   const [slices, setSlices] = useState([false, false, false, true]);
-
+  const [level, setLevel] = useState(1); 
   return (
     <>
       <Scanner />
-      <Skeleton slices={slices} setSlices={setSlices} />
+      <Skeleton slices={slices} setSlices={setSlices} level = {level} setLevel={setLevel}/>
     </>
   );
 }
