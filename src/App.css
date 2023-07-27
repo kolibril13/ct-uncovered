@@ -28,7 +28,15 @@ html {
 #centered-image {
   max-width: 60%; /* Adjust as needed */
   max-height: 60%; /* Adjust as needed */
+  cursor: pointer;
+  /* will-change: filter; */
+  /* transition: filter 300ms; */
 }
+
+/* #centered-image:hover {
+filter: drop-shadow(0 0 3em #BC31C9);
+
+} */
 
 
 
