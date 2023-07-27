@@ -1,12 +1,13 @@
+/* App.css */
+
+/* based on https://stackoverflow.com/a/35232979/6933377 */
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
-
-/* based on https://stackoverflow.com/a/35232979/6933377 */
-
 .planet {
   width: 130px;
   height: 130px;
@@ -16,24 +17,19 @@
   transform-style: preserve-3d;
 }
 
-.blue.planet {
-  background-color: yellow;
-  box-shadow: inset orange -20px -20px 70px;
-}
-
-.green.planet {
-  background-color: lightgreen;
-  box-shadow: inset green -20px -20px 70px;
+.orange.planet {
+  background-color: orange;
+  box-shadow: inset yellow -20px -20px 70px;
 }
 
 .ring {
   width: 150%;
   height: 150%;
   border-radius: 200%;
-  top: -25%; 
   left: -25%; 
   position: absolute;
   transform: rotate3d(1, 0, 0, 76deg);
+  top: 20px;
 }
 
 .planetX {
