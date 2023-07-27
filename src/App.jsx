@@ -1,5 +1,5 @@
 // App.jsx
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import skeleton from "./assets/skeleton.svg";
 import ring from "./assets/gradient-ring.svg";
 import scanner from "./assets/scanner.png";
@@ -34,6 +34,16 @@ function App() {
     setAngle(rotationStart + newAngle);
   };
 
+  useEffect(() => {
+    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [isRotating, angle, rotationStart]);
+
   return (
     <>
       <div id="background-left">
@@ -42,9 +52,6 @@ function App() {
           src={scanner}
           style={{ transform: `rotate(${angle}deg)` }}
           onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          onMouseMove={handleMouseMove}
           ref={imageRef}
           draggable="false"
         />
