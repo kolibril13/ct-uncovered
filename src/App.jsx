@@ -7,11 +7,17 @@ import "./App.css";
 
 function App() {
   const [angle, setAngle] = useState(0);
+  const [rotationStart, setRotationStart] = useState(0);
   const [isRotating, setIsRotating] = useState(false);
   const imageRef = useRef(null);
 
   const handleMouseDown = (event) => {
     setIsRotating(true);
+    const rect = imageRef.current.getBoundingClientRect();
+    const x = event.clientX - rect.left - rect.width / 2;
+    const y = event.clientY - rect.top - rect.height / 2;
+    const startAngle = Math.atan2(y, x) * (180 / Math.PI);
+    setRotationStart(angle - startAngle);
   };
 
   const handleMouseUp = (event) => {
@@ -25,7 +31,7 @@ function App() {
     const x = event.clientX - rect.left - rect.width / 2;
     const y = event.clientY - rect.top - rect.height / 2;
     const newAngle = Math.atan2(y, x) * (180 / Math.PI);
-    setAngle(newAngle+180);
+    setAngle(rotationStart + newAngle);
   };
 
   return (
@@ -40,7 +46,7 @@ function App() {
           onMouseLeave={handleMouseUp}
           onMouseMove={handleMouseMove}
           ref={imageRef}
-          draggable="false" 
+          draggable="false"
         />
       </div>
 
