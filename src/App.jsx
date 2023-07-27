@@ -11,36 +11,56 @@ function App() {
   const [isRotating, setIsRotating] = useState(false);
   const imageRef = useRef(null);
 
-  const handleMouseDown = (event) => {
+  const handleStart = (event) => {
+    event.preventDefault();
     setIsRotating(true);
+    const clientX = event.type === "mousedown" ? event.clientX : event.touches[0].clientX;
+    const clientY = event.type === "mousedown" ? event.clientY : event.touches[0].clientY;
     const rect = imageRef.current.getBoundingClientRect();
-    const x = event.clientX - rect.left - rect.width / 2;
-    const y = event.clientY - rect.top - rect.height / 2;
+    const x = clientX - rect.left - rect.width / 2;
+    const y = clientY - rect.top - rect.height / 2;
     const startAngle = Math.atan2(y, x) * (180 / Math.PI);
     setRotationStart(angle - startAngle);
   };
 
-  const handleMouseUp = (event) => {
+  const handleEnd = (event) => {
+    event.preventDefault();
     setIsRotating(false);
   };
 
-  const handleMouseMove = (event) => {
+  const handleMove = (event) => {
+    event.preventDefault();
     if (!isRotating) return;
-
+    const clientX = event.type === "mousemove" ? event.clientX : event.touches[0].clientX;
+    const clientY = event.type === "mousemove" ? event.clientY : event.touches[0].clientY;
     const rect = imageRef.current.getBoundingClientRect();
-    const x = event.clientX - rect.left - rect.width / 2;
-    const y = event.clientY - rect.top - rect.height / 2;
+    const x = clientX - rect.left - rect.width / 2;
+    const y = clientY - rect.top - rect.height / 2;
     const newAngle = Math.atan2(y, x) * (180 / Math.PI);
     setAngle(rotationStart + newAngle);
   };
 
   useEffect(() => {
-    document.addEventListener('mouseup', handleMouseUp);
-    document.addEventListener('mousemove', handleMouseMove);
+    const image = imageRef.current;
+
+    image.addEventListener('mousedown', handleStart);
+    image.addEventListener('touchstart', handleStart);
+
+    document.addEventListener('mouseup', handleEnd);
+    document.addEventListener('touchend', handleEnd);
+
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('touchmove', handleMove);
 
     return () => {
-      document.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('mousemove', handleMouseMove);
+      image.removeEventListener('mousedown', handleStart);
+      image.removeEventListener('touchstart', handleStart);
+
+      document.removeEventListener('mouseup', handleEnd);
+      document.removeEventListener('touchend', handleEnd);
+
+      document.removeEventListener('mousemove', handleMove);
+      document.removeEventListener('touchmove', handleMove);
     };
   }, [isRotating, angle, rotationStart]);
 
@@ -51,7 +71,6 @@ function App() {
           id="centered-image"
           src={scanner}
           style={{ transform: `rotate(${angle}deg)` }}
-          onMouseDown={handleMouseDown}
           ref={imageRef}
           draggable="false"
         />
