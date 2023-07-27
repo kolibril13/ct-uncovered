@@ -7,15 +7,13 @@ import "./App.css";
 function App() {
   return (
     <>
-      <div id="myDiv">
-        <div>
-          <div className="skeleton-canvas">
-            <img src={skeleton} className="skeletonSvg" />
-            <img src={ring} className="ring ring1" draggable="false" />
-            <img src={ring} className="ring ring2" draggable="false" />
-            <img src={ring} className="ring ring3" draggable="false" />
-            <img src={ring} className="ring ring4" draggable="false" />
-          </div>
+      <div id="background-right">
+        <div className="skeleton-canvas">
+          <img src={skeleton} className="skeletonSvg" />
+          <img src={ring} className="ring ring1" draggable="false" />
+          <img src={ring} className="ring ring2" draggable="false" />
+          <img src={ring} className="ring ring3" draggable="false" />
+          <img src={ring} className="ring ring4" draggable="false" />
         </div>
       </div>
     </>
