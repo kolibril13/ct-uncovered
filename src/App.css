@@ -32,8 +32,9 @@
   border-radius: 200%;
   position: absolute;
   left: -25%; 
-  transform: rotate3d(1, 0, 0, 76deg);
-  opacity: 0.2;
+  transform: rotate3d(1, 0, 0, 85deg);
+  opacity: 0.3;
+
 }
 
 
@@ -42,20 +43,23 @@
   /* background: #ff800a; */
   z-index: 2;
   /* box-shadow: 3px 2px 5px #000; */
-  transform: rotate3d(1, 0, 0, 76deg);
-  opacity: 0.6;
+  transform: rotate3d(1, 0, 0, 85deg);
+  opacity: 1;
 
 
 }
 
 .ring1 {
-  top: calc(20px - 0px);
+  top: calc(-62px + 50px);
 }
 
 .ring2 {
-  top: calc(20px - 50px);
+  top: calc(-62px + 100px);
+}
+.ring3 {
+  top: calc(-62px + 150px);
 }
 
-.ring3 {
-  top: calc(20px - 100px);
+.ring4 {
+  top: calc(-62px + 200px);
 }
