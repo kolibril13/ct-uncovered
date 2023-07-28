@@ -56,10 +56,19 @@
   top: -60%;
 }
 
-.cross-mark, .check-mark {
+.cross-mark {
   transform: scale(5);
   position: absolute;
-  top: 50px;
-  right: 50px
-  /* Add necessary positioning and other styles here */
+  bottom: 50px;
+  right: 50px;
+  opacity: 1;
+}
+
+
+.check-mark{
+  transform: scale(5);
+  position: absolute;
+  bottom: 50px;
+  right: 150px;
+  opacity: 1;
 }
