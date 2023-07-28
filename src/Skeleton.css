@@ -33,6 +33,7 @@
   opacity: 0.3;
 }
 
+
 .ring:hover {
   transform: rotate3d(1, 0, 0, 80deg);
   cursor: pointer;
@@ -53,4 +54,12 @@
 
 .ring4 {
   top: -60%;
+}
+
+.cross-mark, .check-mark {
+  transform: scale(5);
+  position: absolute;
+  top: 50px;
+  right: 50px
+  /* Add necessary positioning and other styles here */
 }
