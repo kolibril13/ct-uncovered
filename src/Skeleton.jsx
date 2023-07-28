@@ -4,13 +4,14 @@ import skeleton from "./assets/skeleton.svg";
 import ring from "./assets/gradient-ring.svg";
 import "./Skeleton.css";
 
-function Skeleton({ slices, setSlices, level, setLevel }) {
+function Skeleton({ slices, level, setLevel }) {
   const handleClick = (index) => {
     if (!slices[index]) {
       console.log("red");
     }
     if (slices[index]) {
       console.log("green");
+      setLevel(level + 1);
     }
   };
   return (
