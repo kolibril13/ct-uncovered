@@ -69,6 +69,27 @@
   transform: scale(5);
   position: absolute;
   bottom: 50px;
-  right: 150px;
+  right: 50px;
   opacity: 1;
+}
+
+/* Skeleton.css */
+.button {
+  /* ... other styles */
+  position: relative; /* So the CheckComponents are positioned relative to this */
+}
+
+.check-mark {
+  position: absolute;
+  animation: fadeOut 0.5s linear forwards;
+}
+
+.cross-mark {
+  position: absolute;
+  animation: fadeOut 0.5s linear forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
