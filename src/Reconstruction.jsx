@@ -30,7 +30,6 @@ function Reconstruction() {
     }
   }
   let duration = new Date().valueOf() - start;
-  console.log(resultMatrix);
 
   function handleClick() {
     setMyTracker(mytracker + 1);
