@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import skeleton from "./assets/skeleton.svg";
+import ring from "./assets/gradient-ring.svg";
 import "./Skeleton.css";
 
 function CheckComponent() {
@@ -32,8 +34,34 @@ function Skeleton() {
   console.log(checks, crosses)
   return (
     <div id="background-right">
-      <button className="button" onClick={addCheck}>Check!</button>
-      <button className="button" onClick={addCross}>Cross!</button>
+      <div className="skeleton-canvas">
+        <img src={skeleton} className="skeletonSvg" draggable="false" />
+        <img
+          src={ring}
+          className="ring ring1"
+          draggable="false"
+          onClick={() => addCheck()}
+        />
+        <img
+          src={ring}
+          className="ring ring2"
+          draggable="false"
+          onClick={() => addCheck()}
+        />
+        <img
+          src={ring}
+          className="ring ring3"
+          draggable="false"
+          onClick={() => addCheck()}
+        />
+        <img
+          src={ring}
+          className="ring ring4"
+          draggable="false"
+          onClick={() => addCheck()}
+        />
+      </div>
+    {/* </div> */}
       {checks.map(id => <CheckComponent key={id} />)}
       {crosses.map(id => <CrossComponent key={id} />)}
     </div>
