@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Scanner from "./Scanner";
 import Skeleton from "./Skeleton";
+import Reconstruction from "./Reconstruction";
 import "./App.css";
 
 function App() {
@@ -26,8 +27,9 @@ function App() {
 
   return (
     <>
+      <Reconstruction />
       <Scanner />
-      <Skeleton slices={slices} level={level} setLevel={setLevel} />
+      {/* <Skeleton slices={slices} level={level} setLevel={setLevel} /> */}
     </>
   );
 }

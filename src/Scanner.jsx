@@ -64,7 +64,7 @@ const handleStart = (event) => {
 
   
   return (
-    <div id="background-left">
+    <div className="background-left">
       <img
         id="centered-image"
         src={scanner}
