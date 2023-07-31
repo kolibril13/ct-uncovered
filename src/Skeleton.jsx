@@ -11,7 +11,7 @@ function CrossComponent() {
   return <div className="cross-mark">❌</div>;
 }
 
-function Skeleton() {
+function Skeleton({slices, level, setLevel}) {
   const [checks, setChecks] = useState([]);
   const [crosses, setCrosses] = useState([]);
 
@@ -46,19 +46,19 @@ function Skeleton() {
           src={ring}
           className="ring ring2"
           draggable="false"
-          onClick={() => addCheck()}
+          onClick={() => addCross()}
         />
         <img
           src={ring}
           className="ring ring3"
           draggable="false"
-          onClick={() => addCheck()}
+          onClick={() => addCross()}
         />
         <img
           src={ring}
           className="ring ring4"
           draggable="false"
-          onClick={() => addCheck()}
+          onClick={() => addCross()}
         />
       </div>
     {/* </div> */}
