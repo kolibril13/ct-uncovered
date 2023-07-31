@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import Scanner from "./Scanner";
 import Skeleton from "./Skeleton";
 import Reconstruction from "./Reconstruction";
+
+import jsonData from "./assets/tooth_discrete.json";
+
+
 import "./App.css";
 
 function App() {
@@ -29,7 +33,7 @@ function App() {
 
   return (
     <>
-      <Reconstruction />
+      <Reconstruction jsonData= {jsonData} />
       {/* <Scanner angle={angle} setAngle={setAngle} /> */}
       {/* <Skeleton slices={slices} level={level} setLevel={setLevel} /> */}
     </>

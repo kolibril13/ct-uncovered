@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as math from "mathjs";
-import jsonData from "./assets/tooth_discrete.json";
 
 function MatrixImage({ matrix }) {
   const canvasRef = useRef();
@@ -27,48 +26,46 @@ function MatrixImage({ matrix }) {
   );
 }
 
-function Reconstruction({ angle }) {
-  var start = new Date().valueOf();
+function MatrixImage1({ matrix }) {
+  return (
+    <h1> Hi</h1>
+  )
+}
 
+function Reconstruction({ jsonData }) {
+  const [count, setCount] = useState(0);
+  function handelClick() {
+    console.log("hi");
+    setCount(count + 1);
+  }
+
+  var start = new Date().valueOf();
   const list_of_projections_all = [];
+
+  let img_final = math.ones([309, 309]);
 
   // read image arrays from json
   for (let key of Object.keys(jsonData)) {
     let image = math.matrix(jsonData[key]);
-    // var img = nj.array(chapter_content, "float32");
-
-    image = math.multiply(image, 100);
     list_of_projections_all.push(image);
   }
+  // for (const element of list_of_projections_all) {
+  //   img_final = math.add(img_final, element);
+  // }
+  // img_final = math.multiply(img_final, 1 / list_of_projections_all.length);
+  img_final = math.add(img_final, 2);
+  img_final = math.multiply(img_final, 70);
+
+  let duration = new Date().valueOf() - start;
 
   return (
     <div>
-      {/* <MatrixImage matrix={randomIntMatrix.toArray()} />{" "} */}
-      <MatrixImage matrix={list_of_projections_all[0].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[1].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[2].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[3].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[4].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[5].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[6].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[7].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[8].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[9].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[10].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[11].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[12].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[13].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[14].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[15].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[16].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[17].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[18].toArray()} />{" "}
-      <MatrixImage matrix={list_of_projections_all[19].toArray()} />{" "}
-      <h1>Hi result {new Date().valueOf() - start} ms </h1>
+      <MatrixImage matrix={img_final} />{" "}
+      {/* <MatrixImage1 matrix={img_final.toArray()} /> */}
+      <h1>Hi result {duration} ms </h1>
+      <button onClick={handelClick}>Hi</button>
     </div>
   );
 }
 
 export default Reconstruction;
-
-// math.add(matrixA, matrixB);
