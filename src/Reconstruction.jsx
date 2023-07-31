@@ -1,6 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import * as math from "mathjs";
 
+// Linear congruential generator (LCG)
+function lcg(seed) {
+  let state = seed;
+  return () => {
+    state = (1664525 * state + 1013904223) & 0xffffffff;
+    return state / 0xffffffff;
+  };
+}
 
 function MatrixImage({ matrix }) {
   const canvasRef = useRef();
@@ -27,13 +35,20 @@ function MatrixImage({ matrix }) {
   );
 }
 
-function Reconstruction() {
-  const randomIntMatrixArray = Array.from({ length: 100 }, () =>
-    Array.from({ length: 100 }, () => Math.floor(math.random() * 256))
-  );
+function Reconstruction({angle}) {
+  const getRandomIntMatrix = () => {
+    const seed = Date.now(); // Get current time in milliseconds as the seed
+    const rng = lcg(seed); // Create a seedable random number generator
+    const randomIntMatrixArray = Array.from({ length: 400 }, () =>
+      Array.from({ length: 400 }, () => Math.floor(rng() * 256)) // Use rng() to get a random number with the seed
+    );
 
-  // Convert it to a matrix
-  const randomIntMatrix = math.matrix(randomIntMatrixArray);
+    // Convert it to a matrix
+    return math.matrix(randomIntMatrixArray);
+  };
+
+  // Generate the randomIntMatrix with the time-based seed
+  const randomIntMatrix = getRandomIntMatrix();
 
   console.log(randomIntMatrix);
 
@@ -45,23 +60,11 @@ function Reconstruction() {
   console.log(result);
   
   return (
-      <div>
-        <MatrixImage matrix={randomIntMatrixArray} />
-      <h1>Resul</h1>
+    <div>
+      <MatrixImage matrix={randomIntMatrix.toArray()} /> {/* Convert math.js matrix to a regular array */}
+      <h1>Result</h1>
     </div>
   );
 }
-
-// import React, { useState, useRef, useEffect } from "react";
-// import jsonData from './assets/tooth_discrete.json'
-// import nj from "numjs";
-
-// function Reconstruction() {
-
-//     console.log(jsonData)
-//     const list_of_projections_all = [];
-
-//   return <h1 className="background-left">Reconstruction</h1>;
-// }
 
 export default Reconstruction;

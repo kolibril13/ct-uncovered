@@ -2,8 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import scanner from "./assets/scanner.png";
 
-function Scanner() {
-  const [angle, setAngle] = useState(0);
+function Scanner({angle, setAngle}) {
   const [rotationStart, setRotationStart] = useState(0);
   const [isRotating, setIsRotating] = useState(false);
   const imageRef = useRef(null);

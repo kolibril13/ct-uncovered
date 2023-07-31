@@ -6,6 +6,8 @@ import "./App.css";
 
 function App() {
   const [slices, setSlices] = useState([true, false, false, false]);
+  const [angle, setAngle] = useState(0);
+
   const [level, setLevel] = useState(1);
 
   // Remember the previous level
@@ -28,8 +30,8 @@ function App() {
   return (
     <>
       <Reconstruction />
-      <Scanner />
-      {/* <Skeleton slices={slices} level={level} setLevel={setLevel} /> */}
+      <Scanner angle={angle} setAngle={setAngle} />
+      <Skeleton slices={slices} level={level} setLevel={setLevel} />
     </>
   );
 }
