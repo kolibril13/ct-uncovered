@@ -26,12 +26,6 @@ function MatrixImage({ matrix }) {
   );
 }
 
-function MatrixImage1({ matrix }) {
-  return (
-    <h1> Hi</h1>
-  )
-}
-
 function Reconstruction({ jsonData }) {
   const [count, setCount] = useState(0);
   function handelClick() {
@@ -39,29 +33,29 @@ function Reconstruction({ jsonData }) {
     setCount(count + 1);
   }
 
-  var start = new Date().valueOf();
-  const list_of_projections_all = [];
-
-  let img_final = math.ones([309, 309]);
-
-  // read image arrays from json
+  let list_of_projections_all = [];
   for (let key of Object.keys(jsonData)) {
     let image = math.matrix(jsonData[key]);
     list_of_projections_all.push(image);
   }
-  // for (const element of list_of_projections_all) {
-  //   img_final = math.add(img_final, element);
-  // }
-  // img_final = math.multiply(img_final, 1 / list_of_projections_all.length);
-  img_final = math.add(img_final, 2);
+
+  let img_final = math.matrix(math.ones([360, 360]));
+  console.log(img_final);
+  var start = new Date().valueOf();
+  // read image arrays from json
+  for (let i = 0; i < list_of_projections_all.length-15; i++) {
+    img_final = math.add(img_final, list_of_projections_all[i]);
+  }
+
+  img_final = math.multiply(img_final, 1 / list_of_projections_all.length);
+  img_final = math.add(img_final, 1);
   img_final = math.multiply(img_final, 70);
 
   let duration = new Date().valueOf() - start;
 
   return (
     <div>
-      <MatrixImage matrix={img_final} />{" "}
-      {/* <MatrixImage1 matrix={img_final.toArray()} /> */}
+      <MatrixImage matrix={img_final.toArray()} />{" "}
       <h1>Hi result {duration} ms </h1>
       <button onClick={handelClick}>Hi</button>
     </div>

@@ -3,12 +3,12 @@ import Scanner from "./Scanner";
 import Skeleton from "./Skeleton";
 import Reconstruction from "./Reconstruction";
 
-import jsonData from "./assets/tooth_discrete.json";
-
+import all_data from "./assets/ct_slice_730_upper_legs_continuous.json";
 
 import "./App.css";
 
 function App() {
+  const jsonData = all_data["imgs"];
   const [slices, setSlices] = useState([true, false, false, false]);
   const [angle, setAngle] = useState(0);
 
