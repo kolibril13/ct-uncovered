@@ -30,8 +30,8 @@ function App() {
   return (
     <>
       <Reconstruction />
-      <Scanner angle={angle} setAngle={setAngle} />
-      <Skeleton slices={slices} level={level} setLevel={setLevel} />
+      {/* <Scanner angle={angle} setAngle={setAngle} /> */}
+      {/* <Skeleton slices={slices} level={level} setLevel={setLevel} /> */}
     </>
   );
 }
