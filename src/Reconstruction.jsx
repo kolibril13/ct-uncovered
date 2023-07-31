@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as math from "mathjs";
-
+import jsonData from "./assets/tooth_discrete.json"
 // Linear congruential generator (LCG)
 function lcg(seed) {
   let state = seed;
@@ -39,8 +39,8 @@ function Reconstruction({angle}) {
   const getRandomIntMatrix = () => {
     const seed = Date.now(); // Get current time in milliseconds as the seed
     const rng = lcg(seed); // Create a seedable random number generator
-    const randomIntMatrixArray = Array.from({ length: 400 }, () =>
-      Array.from({ length: 400 }, () => Math.floor(rng() * 256)) // Use rng() to get a random number with the seed
+    const randomIntMatrixArray = Array.from({ length: 309 }, () =>
+      Array.from({ length: 309 }, () => Math.floor(rng() * 256)) // Use rng() to get a random number with the seed
     );
 
     // Convert it to a matrix
@@ -52,9 +52,9 @@ function Reconstruction({angle}) {
 
   console.log(randomIntMatrix);
 
-  const matrixA = math.zeros(3, 3);
+  const matrixA = math.zeros(309, 309);
 
-  const matrixB = math.zeros(3, 3);
+  const matrixB = math.zeros(309, 309);
 
   const result = math.add(matrixA, matrixB);
   console.log(result);
