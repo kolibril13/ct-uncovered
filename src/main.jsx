@@ -3,6 +3,10 @@ import { createRoot } from "react-dom/client";
 
 import App from "./App";
 
+import initReactFastclick from 'react-fastclick';
+initReactFastclick();
+
+
 const root = createRoot(document.getElementById("root"));
 root.render(
   // <StrictMode>
