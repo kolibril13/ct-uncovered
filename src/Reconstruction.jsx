@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 import * as math from "mathjs";
-import jsonData from "./assets/tooth_discrete.json"
+import jsonData from "./assets/tooth_discrete.json";
 // Linear congruential generator (LCG)
 function lcg(seed) {
   let state = seed;
@@ -35,12 +35,13 @@ function MatrixImage({ matrix }) {
   );
 }
 
-function Reconstruction({angle}) {
+function Reconstruction({ angle }) {
   const getRandomIntMatrix = () => {
     const seed = Date.now(); // Get current time in milliseconds as the seed
     const rng = lcg(seed); // Create a seedable random number generator
-    const randomIntMatrixArray = Array.from({ length: 309 }, () =>
-      Array.from({ length: 309 }, () => Math.floor(rng() * 256)) // Use rng() to get a random number with the seed
+    const randomIntMatrixArray = Array.from(
+      { length: 309 },
+      () => Array.from({ length: 309 }, () => Math.floor(rng() * 256)) // Use rng() to get a random number with the seed
     );
 
     // Convert it to a matrix
@@ -57,11 +58,27 @@ function Reconstruction({angle}) {
   const matrixB = math.zeros(309, 309);
 
   const result = math.add(matrixA, matrixB);
-  console.log(result);
-  
+  console.log(jsonData);
+
+  const list_of_projections_all = [];
+
+  // read image arrays from json
+  for (let key of Object.keys(jsonData)) {
+    let image = math.matrix(jsonData[key]);
+    // var img = nj.array(chapter_content, "float32");
+
+    image = math.multiply(image, 100);
+    list_of_projections_all.push(image);
+  }
+
+  //benchmark timer
+//   var start = new Date().valueOf();
+
   return (
     <div>
-      <MatrixImage matrix={randomIntMatrix.toArray()} /> {/* Convert math.js matrix to a regular array */}
+      {/* <MatrixImage matrix={randomIntMatrix.toArray()} />{" "} */}
+      <MatrixImage matrix={list_of_projections_all[2].toArray()} />{" "}
+      {/* Convert math.js matrix to a regular array */}
       <h1>Result</h1>
     </div>
   );
