@@ -43,7 +43,6 @@ function App() {
     } else if (angle >= 180 && angle < 360) {
       angleIndex = Math.floor((angle - 180) / 9) + 1;
     }
-    console.log(angle);
     console.log(angleIndex);
     if (angleIndex) { // make sure angleIndex is defined
       setSelectedAngles((prevAngles) => ({
@@ -53,6 +52,7 @@ function App() {
     }
   }, [angle]);
   
+  console.log(selectedAngles);
 
 
 
@@ -75,7 +75,7 @@ function App() {
 
   return (
     <>
-      <Reconstruction jsonData={jsonData} />
+      <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
       <Scanner angle={angle} setAngle={setAngle} />
       <Skeleton slices={slices} level={level} setLevel={setLevel} />
     </>
