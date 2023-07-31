@@ -31,7 +31,15 @@ function Skeleton({slices, level, setLevel}) {
     }, 1000);
   };
 
-  console.log(checks, crosses)
+  const handleClick = (index) => {
+    if (slices[index]) {
+      addCheck();
+      setLevel(level + 1);
+    } else {
+      addCross();
+    }
+  };
+
   return (
     <div id="background-right">
       <div className="skeleton-canvas">
@@ -40,25 +48,25 @@ function Skeleton({slices, level, setLevel}) {
           src={ring}
           className="ring ring1"
           draggable="false"
-          onClick={() => addCheck()}
+          onClick={() => handleClick(0)}
         />
         <img
           src={ring}
           className="ring ring2"
           draggable="false"
-          onClick={() => addCross()}
+          onClick={() => handleClick(1)}
         />
         <img
           src={ring}
           className="ring ring3"
           draggable="false"
-          onClick={() => addCross()}
+          onClick={() => handleClick(2)}
         />
         <img
           src={ring}
           className="ring ring4"
           draggable="false"
-          onClick={() => addCross()}
+          onClick={() => handleClick(3)}
         />
       </div>
     {/* </div> */}
