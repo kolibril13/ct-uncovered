@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import "./MatrixImage.css"
 
 function MatrixImage({ matrix }) {
     const canvasRef = useRef();
@@ -21,7 +22,9 @@ function MatrixImage({ matrix }) {
     }, [matrix]);
   
     return (
-      <canvas ref={canvasRef} width={matrix.length} height={matrix[0].length} />
+      // <canvas  ref={canvasRef} width={matrix.length} height={matrix[0].length} />
+         <canvas className="myprojectionimg" ref={canvasRef} width={matrix.length} height={matrix[0].length} />
+
     );
   }
   

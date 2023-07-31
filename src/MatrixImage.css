@@ -1,0 +1,6 @@
+.myprojectionimg{
+   position: absolute;
+    width: 140px; /* Since the right background takes 40.2%, the left should take the remaining space */
+    height: 140px;
+  }
+  

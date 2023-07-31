@@ -37,12 +37,12 @@ function Reconstruction() {
   }
 
   return (
-    <>
-      <p>T1 = {duration} ms </p>
-      <p>Tracker = {mytracker}</p>
-      <button onClick={handleClick}>Restart</button>
+    <div className="background-left">
+      {/* <p>T1 = {duration} ms </p> */}
+      {/* <p>Tracker = {mytracker}</p> */}
+      {/* <button onClick={handleClick}>Restart</button> */}
       <MatrixImage matrix={resultMatrix} />
-    </>
+    </div>
   );
 }
 

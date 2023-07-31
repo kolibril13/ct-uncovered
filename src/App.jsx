@@ -34,8 +34,8 @@ function App() {
   return (
     <>
       <Reconstruction jsonData= {jsonData} />
-      {/* <Scanner angle={angle} setAngle={setAngle} /> */}
-      {/* <Skeleton slices={slices} level={level} setLevel={setLevel} /> */}
+      <Scanner angle={angle} setAngle={setAngle} />
+      <Skeleton slices={slices} level={level} setLevel={setLevel} />
     </>
   );
 }
