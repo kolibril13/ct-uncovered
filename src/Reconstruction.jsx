@@ -1,7 +1,9 @@
 import { useState } from "react";
 import MatrixImage from "./MatrixImage";
 import data from "./assets/ct_slice_730_upper_legs_continuous.json";
-function MatrixBenchmark() {
+
+
+function Reconstruction() {
   const [mytracker, setMyTracker] = useState(0);
   const mydata = data["imgs"];
   
@@ -11,7 +13,7 @@ function MatrixBenchmark() {
       return Float32Array.from(row);
     });
   });
-
+  
   var start = new Date().valueOf();
 
   // Create an empty matrix to store the result
@@ -44,4 +46,4 @@ function MatrixBenchmark() {
   );
 }
 
-export default MatrixBenchmark;
+export default Reconstruction;
