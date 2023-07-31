@@ -11,7 +11,7 @@ function CrossComponent() {
   return <div className="cross-mark">❌</div>;
 }
 
-function Skeleton({slices, level, setLevel}) {
+function Skeleton({ slices, level, setLevel }) {
   const [checks, setChecks] = useState([]);
   const [crosses, setCrosses] = useState([]);
 
@@ -19,7 +19,7 @@ function Skeleton({slices, level, setLevel}) {
     const id = new Date().getTime();
     setChecks([...checks, id]);
     setTimeout(() => {
-      setChecks(checks => checks.filter(check => check !== id));
+      setChecks((checks) => checks.filter((check) => check !== id));
     }, 1000);
   };
 
@@ -27,7 +27,7 @@ function Skeleton({slices, level, setLevel}) {
     const id = new Date().getTime();
     setCrosses([...crosses, id]);
     setTimeout(() => {
-      setCrosses(crosses => crosses.filter(cross => cross !== id));
+      setCrosses((crosses) => crosses.filter((cross) => cross !== id));
     }, 1000);
   };
 
@@ -49,29 +49,37 @@ function Skeleton({slices, level, setLevel}) {
           className="ring ring1"
           draggable="false"
           onClick={() => handleClick(0)}
+          onTouchStart={() => handleClick(0)}
         />
         <img
           src={ring}
           className="ring ring2"
           draggable="false"
           onClick={() => handleClick(1)}
+          onTouchStart={() => handleClick(1)}
         />
         <img
           src={ring}
           className="ring ring3"
           draggable="false"
           onClick={() => handleClick(2)}
+          onTouchStart={() => handleClick(2)}
         />
         <img
           src={ring}
           className="ring ring4"
           draggable="false"
           onClick={() => handleClick(3)}
+          onTouchStart={() => handleClick(3)}
         />
       </div>
-    {/* </div> */}
-      {checks.map(id => <CheckComponent key={id} />)}
-      {crosses.map(id => <CrossComponent key={id} />)}
+      {/* </div> */}
+      {checks.map((id) => (
+        <CheckComponent key={id} />
+      ))}
+      {crosses.map((id) => (
+        <CrossComponent key={id} />
+      ))}
     </div>
   );
 }
