@@ -1,77 +1,46 @@
 // Scanner.jsx
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import scanner from "./assets/scanner.png";
 
-function Scanner({angle, setAngle}) {
-  const [rotationStart, setRotationStart] = useState(0);
+function Scanner() {
+  const [angle, setAngle] = useState(0);
   const [isRotating, setIsRotating] = useState(false);
   const imageRef = useRef(null);
 
-const handleStart = (event) => {
-    event.preventDefault();
+  const handleMouseDown = (event) => {
     setIsRotating(true);
-    const clientX = event.type === "mousedown" ? event.clientX : event.touches[0].clientX;
-    const clientY = event.type === "mousedown" ? event.clientY : event.touches[0].clientY;
-    const rect = imageRef.current.getBoundingClientRect();
-    const x = clientX - rect.left - rect.width / 2;
-    const y = clientY - rect.top - rect.height / 2;
-    const startAngle = Math.atan2(y, x) * (180 / Math.PI);
-    setRotationStart(angle - startAngle);
   };
 
-  const handleEnd = (event) => {
-    event.preventDefault();
+  const handleMouseUp = (event) => {
     setIsRotating(false);
   };
 
-  const handleMove = (event) => {
-    event.preventDefault();
+  const handleMouseMove = (event) => {
     if (!isRotating) return;
-    const clientX = event.type === "mousemove" ? event.clientX : event.touches[0].clientX;
-    const clientY = event.type === "mousemove" ? event.clientY : event.touches[0].clientY;
+
     const rect = imageRef.current.getBoundingClientRect();
-    const x = clientX - rect.left - rect.width / 2;
-    const y = clientY - rect.top - rect.height / 2;
+    const x = event.clientX - rect.left - rect.width / 2;
+    const y = event.clientY - rect.top - rect.height / 2;
     const newAngle = Math.atan2(y, x) * (180 / Math.PI);
-    setAngle(rotationStart + newAngle);
+    setAngle(newAngle + 180);
   };
 
-
-  useEffect(() => {
-    const image = imageRef.current;
-
-    image.addEventListener('mousedown', handleStart);
-    image.addEventListener('touchstart', handleStart);
-
-    document.addEventListener('mouseup', handleEnd);
-    document.addEventListener('touchend', handleEnd);
-
-    document.addEventListener('mousemove', handleMove);
-    document.addEventListener('touchmove', handleMove);
-
-    return () => {
-      image.removeEventListener('mousedown', handleStart);
-      image.removeEventListener('touchstart', handleStart);
-
-      document.removeEventListener('mouseup', handleEnd);
-      document.removeEventListener('touchend', handleEnd);
-
-      document.removeEventListener('mousemove', handleMove);
-      document.removeEventListener('touchmove', handleMove);
-    };
-  }, [isRotating, angle, rotationStart]);
-
-  
   return (
-    <div className="background-left">
-      <img
-        id="centered-image"
-        src={scanner}
-        style={{ transform: `rotate(${angle}deg)` }}
-        ref={imageRef}
-        draggable="false"
-      />
-    </div>
+    <>
+      <div className="background-left">
+        <img
+          id="centered-image"
+          src={scanner}
+          style={{ transform: `rotate(${angle}deg)` }}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          ref={imageRef}
+          draggable="false"
+        />
+      </div>
+    </>
   );
 }
 
