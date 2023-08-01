@@ -76,7 +76,7 @@ function App() {
   return (
     <>
       <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
-      <Scanner angle={angle} setAngle={setAngle} />
+      <Scanner rotateDegree={angle} setRotateDegree={setAngle} />
       <Skeleton slices={slices} level={level} setLevel={setLevel} />
     </>
   );
