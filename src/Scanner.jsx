@@ -12,7 +12,7 @@ const Scanner = ({ rotateDegree, setRotateDegree }) => {
     const y = rect.top + rect.height / 2;
     const rad = Math.atan2(e.clientY - y, e.clientX - x);
     const deg = rad * (180 / Math.PI) + 180;
-
+    console.log(deg);
     setRotateDegree(deg);
   };
 

@@ -43,7 +43,7 @@ function App() {
     } else if (angle >= 180 && angle < 360) {
       angleIndex = Math.floor((angle - 180) / 9) + 1;
     }
-    console.log(angleIndex);
+    // console.log(angleIndex);
     if (angleIndex) { // make sure angleIndex is defined
       setSelectedAngles((prevAngles) => ({
         ...prevAngles,
@@ -52,7 +52,7 @@ function App() {
     }
   }, [angle]);
   
-  console.log(selectedAngles);
+  // console.log(selectedAngles);
 
 
 
@@ -61,7 +61,7 @@ function App() {
 
   useEffect(() => {
     if (level > prevLevel) {
-      console.log(`Level increased to ${level}`);
+      // console.log(`Level increased to ${level}`);
 
       if (level === 2) {
         setSlices([false, true, false, false]);
