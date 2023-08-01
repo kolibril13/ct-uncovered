@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Scanner from "./Scanner";
 import Skeleton from "./Skeleton";
 import Reconstruction from "./Reconstruction";
-
+import CircleArcs from "./CircleArcs";
 import all_data from "./assets/ct_slice_730_upper_legs_continuous.json";
 
 import "./App.css";
@@ -78,6 +78,7 @@ function App() {
       <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
       <Scanner rotateDegree={angle} setRotateDegree={setAngle} />
       <Skeleton slices={slices} level={level} setLevel={setLevel} />
+      <CircleArcs />
     </>
   );
 }
