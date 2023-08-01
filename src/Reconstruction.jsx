@@ -1,6 +1,7 @@
 import { useState } from "react";
 import MatrixImage from "./MatrixImage";
 import data from "./assets/ct_slice_730_upper_legs_continuous.json";
+import CircleArcs from './CircleArcs';
 
 function Reconstruction({ selectedAngles }) {
   const [mytracker, setMyTracker] = useState(0);
@@ -46,6 +47,8 @@ function Reconstruction({ selectedAngles }) {
       {/* <p>Tracker = {mytracker}</p> */}
       {/* <button onClick={handleClick}>Restart</button> */}
       <MatrixImage matrix={resultMatrix} />
+      <CircleArcs selectedAngles={selectedAngles} />
+
     </div>
   );
 }
