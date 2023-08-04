@@ -4,7 +4,7 @@ function CircleArcs({ selectedAngles }) {
   const svgRef = useRef(null);
 
   useEffect(() => {
-    const radius = 100; 
+    const radius = 100;
     const centerX = 200;
     const centerY = 200;
 
@@ -29,9 +29,9 @@ function CircleArcs({ selectedAngles }) {
       "#1bb1de",
       "#1ab7e0",
       "#19bde3",
-    ]
+    ];
 
-    const drawArcs = (startAngle, endAngle, colorOffset) => {
+    const drawArcs = (startAngle, endAngle, reverse) => {
       for (let i = 0; i < 20; i++) {
         let start = {
           x: centerX + radius * Math.cos((Math.PI * startAngle) / 180),
@@ -64,10 +64,18 @@ function CircleArcs({ selectedAngles }) {
           "path"
         );
         newElement.setAttribute("d", d);
-        newElement.setAttribute(
-          "stroke",
-          selectedAngles[`angle${i + 1 + colorOffset}`] ? colors[i] : "lightgrey"
-        );
+        if (reverse) {
+          newElement.setAttribute(
+            "stroke",
+            selectedAngles[`angle${i + 1}`] ? colors[19-i] : "lightgrey"
+          );
+        } else {
+          newElement.setAttribute(
+            "stroke",
+            selectedAngles[`angle${i + 1}`] ? colors[i] : "lightgrey"
+          );
+        }
+
         newElement.setAttribute("stroke-width", "20");
         newElement.setAttribute("fill", "none");
 
@@ -80,8 +88,8 @@ function CircleArcs({ selectedAngles }) {
       }
     };
 
-    drawArcs(0, 9, 0);
-    drawArcs(180, 189, 20); // Start drawing from the opposite side
+    drawArcs(0, 9, false);
+    drawArcs(180, 189, true); // Start drawing from the opposite side
   }, [selectedAngles]);
 
   return (
