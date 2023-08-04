@@ -21,7 +21,7 @@ function App() {
     angle6: false,
     angle7: false,
     angle8: false,
-    angle9: false,
+    // angle9: false,
     angle10: false,
     angle11: false,
     angle12: false,
@@ -35,26 +35,8 @@ function App() {
     angle20: false,
   });
 
-  useEffect(() => {
-    let angleIndex;
-    
-    if (angle >= 0 && angle < 180) {
-      angleIndex = Math.floor(angle / 9) + 1;
-    } else if (angle >= 180 && angle < 360) {
-      angleIndex = Math.floor((angle - 180) / 9) + 1;
-    }
-    // console.log(angleIndex);
-    if (angleIndex) { // make sure angleIndex is defined
-      setSelectedAngles((prevAngles) => ({
-        ...prevAngles,
-        [`angle${angleIndex}`]: true,
-      }));
-    }
-  }, [angle]);
-  
+
   // console.log(selectedAngles);
-
-
 
   // Remember the previous level
   const [prevLevel, setPrevLevel] = useState(level);
@@ -75,9 +57,14 @@ function App() {
 
   return (
     <>
-      <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
+      {/* <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} /> */}
       <CircleArcs selectedAngles={selectedAngles} />
-      <Scanner rotateDegree={angle} setRotateDegree={setAngle} />
+      <Scanner
+        angle={angle}
+        setAngle={setAngle}
+        selectedAngles={selectedAngles}
+        setSelectedAngles={setSelectedAngles}
+      />
       <Skeleton slices={slices} level={level} setLevel={setLevel} />
     </>
   );
