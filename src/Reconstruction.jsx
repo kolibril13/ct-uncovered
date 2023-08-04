@@ -47,7 +47,7 @@ function Reconstruction({ selectedAngles }) {
       {/* <p>Tracker = {mytracker}</p> */}
       {/* <button onClick={handleClick}>Restart</button> */}
       <MatrixImage matrix={resultMatrix} />
-      <CircleArcs selectedAngles={selectedAngles} />
+      {/* <CircleArcs selectedAngles={selectedAngles} /> */}
 
     </div>
   );

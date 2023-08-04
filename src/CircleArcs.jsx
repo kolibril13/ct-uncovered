@@ -4,12 +4,9 @@ function CircleArcs({ selectedAngles }) {
   const svgRef = useRef(null);
 
   useEffect(() => {
-    const radius = 100; // Doubled the radius size
-    let startAngle = 0;
-    let endAngle = 9;
-    const centerX = 200; // Doubled the center coordinates
+    const radius = 100; 
+    const centerX = 200;
     const centerY = 200;
-
 
     const colors = [
       "#2c61b5",
@@ -32,61 +29,66 @@ function CircleArcs({ selectedAngles }) {
       "#1bb1de",
       "#1ab7e0",
       "#19bde3",
-    ];
+    ]
 
-    for (let i = 0; i < 20; i++) {
-      let start = {
-        x: centerX + radius * Math.cos((Math.PI * startAngle) / 180),
-        y: centerY + radius * Math.sin((Math.PI * startAngle) / 180),
-      };
+    const drawArcs = (startAngle, endAngle, colorOffset) => {
+      for (let i = 0; i < 20; i++) {
+        let start = {
+          x: centerX + radius * Math.cos((Math.PI * startAngle) / 180),
+          y: centerY + radius * Math.sin((Math.PI * startAngle) / 180),
+        };
 
-      let end = {
-        x: centerX + radius * Math.cos((Math.PI * endAngle) / 180),
-        y: centerY + radius * Math.sin((Math.PI * endAngle) / 180),
-      };
+        let end = {
+          x: centerX + radius * Math.cos((Math.PI * endAngle) / 180),
+          y: centerY + radius * Math.sin((Math.PI * endAngle) / 180),
+        };
 
-      let largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+        let largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
 
-      let d = [
-        "M",
-        start.x,
-        start.y,
-        "A",
-        radius,
-        radius,
-        0,
-        largeArcFlag,
-        1,
-        end.x,
-        end.y,
-      ].join(" ");
+        let d = [
+          "M",
+          start.x,
+          start.y,
+          "A",
+          radius,
+          radius,
+          0,
+          largeArcFlag,
+          1,
+          end.x,
+          end.y,
+        ].join(" ");
 
-      let newElement = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "path"
-      );
-      newElement.setAttribute("d", d);
-      newElement.setAttribute(
-        "stroke",
-        selectedAngles[`angle${i + 1}`] ? colors[i] : "black"
-      ); // Select color from array or black if not selected
-      newElement.setAttribute("stroke-width", "20"); // Doubled the stroke width
-      newElement.setAttribute("fill", "none");
+        let newElement = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "path"
+        );
+        newElement.setAttribute("d", d);
+        newElement.setAttribute(
+          "stroke",
+          selectedAngles[`angle${i + 1 + colorOffset}`] ? colors[i] : "lightgrey"
+        );
+        newElement.setAttribute("stroke-width", "20");
+        newElement.setAttribute("fill", "none");
 
-      if (svgRef.current) {
-        svgRef.current.appendChild(newElement);
+        if (svgRef.current) {
+          svgRef.current.appendChild(newElement);
+        }
+
+        startAngle += 9;
+        endAngle += 9;
       }
+    };
 
-      startAngle += 9;
-      endAngle += 9;
-    }
+    drawArcs(0, 9, 0);
+    drawArcs(180, 189, 20); // Start drawing from the opposite side
   }, [selectedAngles]);
 
   return (
     <div className="background-left">
-      <svg className="my_outer_circle" ref={svgRef} viewBox="0 0 400 400" /> {/* Doubled the viewBox dimensions */}
+      <svg className="my_outer_circle" ref={svgRef} viewBox="0 0 400 400" />
     </div>
-  )
-  }
+  );
+}
 
 export default CircleArcs;
