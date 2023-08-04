@@ -7,13 +7,38 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
 
   const setAnglesInRange = (startAngle, endAngle) => {
     // Function to set all angles between startAngle and endAngle
-    let startIndex = Math.floor(startAngle / 9) + 1;
-    let endIndex = Math.floor(endAngle / 9) + 1;
-    for (let i = startIndex; i <= endIndex; i++) {
-      setSelectedAngles(prevAngles => ({
-        ...prevAngles,
-        [`angle${i}`]: true,
-      }));
+    let startIndex, endIndex;
+    if (startAngle >= 0 && startAngle < 180) {
+      startIndex = Math.floor(startAngle / 9) + 1;
+    } else if (startAngle >= 180 && startAngle < 360) {
+      startIndex = Math.floor((startAngle - 180) / 9) + 1;
+    }
+    if (endAngle >= 0 && endAngle < 180) {
+      endIndex = Math.floor(endAngle / 9) + 1;
+    } else if (endAngle >= 180 && endAngle < 360) {
+      endIndex = Math.floor((endAngle - 180) / 9) + 1;
+    }
+
+    if (startIndex <= endIndex) {
+      for (let i = startIndex; i <= endIndex; i++) {
+        setSelectedAngles(prevAngles => ({
+          ...prevAngles,
+          [`angle${i}`]: true,
+        }));
+      }
+    } else {
+      for (let i = startIndex; i <= 20; i++) {
+        setSelectedAngles(prevAngles => ({
+          ...prevAngles,
+          [`angle${i}`]: true,
+        }));
+      }
+      for (let i = 1; i <= endIndex; i++) {
+        setSelectedAngles(prevAngles => ({
+          ...prevAngles,
+          [`angle${i}`]: true,
+        }));
+      }
     }
   };
 
@@ -28,7 +53,10 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
     const x = rect.left + rect.width / 2;
     const y = rect.top + rect.height / 2;
     const rad = Math.atan2(e.clientY - y, e.clientX - x);
-    const deg = rad * (180 / Math.PI) + 180;
+    let deg = rad * (180 / Math.PI) + 180;
+    if (deg >= 360) {
+      deg = deg - 360;
+    }
     console.log(deg);
     return deg;
   };
