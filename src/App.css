@@ -38,3 +38,10 @@ filter: drop-shadow(0 0 3em #BC31C9);
 
 } */
 
+
+.my_outer_circle{
+  width: 480px;
+  height: 480px;
+  border: red solid 2px;
+
+}
