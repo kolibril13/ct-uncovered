@@ -11,7 +11,7 @@ function App() {
   const jsonData = all_data["imgs"];
   const [level, setLevel] = useState(1);
   const [slices, setSlices] = useState([true, false, false, false]);
-  const [angle, setAngle] = useState(0);
+  const [angle, setAngle] = useState(-360);
   const [selectedAngles, setSelectedAngles] = useState({
     angle1: false,
     angle2: false,
@@ -77,7 +77,7 @@ function App() {
     <>
       <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
       <Scanner rotateDegree={angle} setRotateDegree={setAngle} />
-      <Skeleton slices={slices} level={level} setLevel={setLevel} />
+      {/* <Skeleton slices={slices} level={level} setLevel={setLevel} /> */}
       {/* <CircleArcs selectedAngles={selectedAngles} /> */}
     </>
   );
