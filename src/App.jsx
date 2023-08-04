@@ -57,7 +57,7 @@ function App() {
 
   return (
     <>
-      {/* <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} /> */}
+      <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
       <CircleArcs selectedAngles={selectedAngles} />
       <Scanner
         angle={angle}
