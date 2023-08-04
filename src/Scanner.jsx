@@ -3,7 +3,7 @@ import scanner from "./assets/scanner.png";
 
 const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
   const imageRef = useRef(null);
-  const [lastAngle, setLastAngle] = useState(0); // New state variable
+  const [lastAngle, setLastAngle] = useState(null); // New state variable
 
   const setAnglesInRange = (startAngle, endAngle) => {
     // Function to set all angles between startAngle and endAngle
@@ -18,16 +18,8 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
   };
 
   useEffect(() => {
-    let angleIndex;
-    if (angle >= 0 && angle < 180) {
-      angleIndex = Math.floor(angle / 9) + 1;
-    } else if (angle >= 180 && angle < 360) {
-      angleIndex = Math.floor((angle - 180) / 9) + 1;
-    }
-
-    if (angleIndex) {
+    if (lastAngle !== null) {
       setAnglesInRange(lastAngle, angle); // Call the new function
-      setLastAngle(angle); // Update the last angle
     }
   }, [angle]);
 
@@ -38,18 +30,21 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
     const rad = Math.atan2(e.clientY - y, e.clientX - x);
     const deg = rad * (180 / Math.PI) + 180;
     console.log(deg);
-    setAngle(deg);
+    return deg;
   };
 
   const handleMouseDown = (e) => {
-    calculateRotation(e);
+    const initialAngle = calculateRotation(e);
+    setAngle(initialAngle); // Update the angle at the beginning of the drag
+    setLastAngle(initialAngle); // Update the last angle at the beginning of the drag
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
   };
 
   const handleMouseMove = (e) => {
     if (e.buttons === 1) {
-      calculateRotation(e);
+      const newAngle = calculateRotation(e);
+      setAngle(newAngle);
     }
   };
 
