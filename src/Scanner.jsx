@@ -1,26 +1,33 @@
-// Scanner.jsx
-
 import React, { useState, useRef, useEffect } from "react";
 import scanner from "./assets/scanner.png";
 
 const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
   const imageRef = useRef(null);
+  const [lastAngle, setLastAngle] = useState(0); // New state variable
+
+  const setAnglesInRange = (startAngle, endAngle) => {
+    // Function to set all angles between startAngle and endAngle
+    let startIndex = Math.floor(startAngle / 9) + 1;
+    let endIndex = Math.floor(endAngle / 9) + 1;
+    for (let i = startIndex; i <= endIndex; i++) {
+      setSelectedAngles(prevAngles => ({
+        ...prevAngles,
+        [`angle${i}`]: true,
+      }));
+    }
+  };
 
   useEffect(() => {
     let angleIndex;
-
     if (angle >= 0 && angle < 180) {
       angleIndex = Math.floor(angle / 9) + 1;
     } else if (angle >= 180 && angle < 360) {
       angleIndex = Math.floor((angle - 180) / 9) + 1;
     }
-    // console.log(angleIndex);
+
     if (angleIndex) {
-      // make sure angleIndex is defined
-      setSelectedAngles((prevAngles) => ({
-        ...prevAngles,
-        [`angle${angleIndex}`]: true,
-      }));
+      setAnglesInRange(lastAngle, angle); // Call the new function
+      setLastAngle(angle); // Update the last angle
     }
   }, [angle]);
 
