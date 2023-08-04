@@ -21,7 +21,7 @@ function App() {
     angle6: false,
     angle7: false,
     angle8: false,
-    // angle9: false,
+    angle9: false,
     angle10: false,
     angle11: false,
     angle12: false,
