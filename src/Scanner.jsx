@@ -6,20 +6,26 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
   const [lastAngle, setLastAngle] = useState(null); // New state variable
 
   const setAnglesInRange = (startAngle, endAngle) => {
-    // Function to set all angles between startAngle and endAngle
+    // Swap startAngle and endAngle if startAngle is greater
+    if (startAngle > endAngle) {
+      [startAngle, endAngle] = [endAngle, startAngle];
+    }
+  
     let startIndex, endIndex;
+  
     if (startAngle >= 0 && startAngle < 180) {
       startIndex = Math.floor(startAngle / 9) + 1;
     } else if (startAngle >= 180 && startAngle < 360) {
       startIndex = Math.floor((startAngle - 180) / 9) + 1;
     }
+  
     if (endAngle >= 0 && endAngle < 180) {
       endIndex = Math.floor(endAngle / 9) + 1;
     } else if (endAngle >= 180 && endAngle < 360) {
       endIndex = Math.floor((endAngle - 180) / 9) + 1;
     }
-
-    if (startIndex <= endIndex) {
+  
+    if ((startIndex <= endIndex && (endIndex - startIndex) <= 10) || (endIndex - startIndex) > 10) {
       for (let i = startIndex; i <= endIndex; i++) {
         setSelectedAngles(prevAngles => ({
           ...prevAngles,
@@ -41,6 +47,7 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
       }
     }
   };
+  
 
   useEffect(() => {
     if (lastAngle !== null) {
