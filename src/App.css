@@ -25,7 +25,21 @@ html {
   justify-content: center; /* Centers the image horizontally */
 }
 
-#centered-image {
+
+#background-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40.2%;
+  height: 100%;
+  background: url("./assets/Hintergrund2.svg");
+  background-blend-mode: screen;
+  background-size: cover;
+}
+
+
+
+#scanner-image {
   max-width: 60%; /* Adjust as needed */
   max-height: 60%; /* Adjust as needed */
   cursor: pointer;
@@ -33,7 +47,7 @@ html {
   /* transition: filter 300ms; */
 }
 
-/* #centered-image:hover {
+/* #scanner-image:hover {
 filter: drop-shadow(0 0 3em #BC31C9);
 
 } */
@@ -54,7 +68,31 @@ filter: drop-shadow(0 0 3em #BC31C9);
   -ms-user-select: none;
 }
 
-@media only screen and (max-width: 768px) { /* You can adjust the value to target specific devices */
+@media only screen and (max-width: 768px) { 
+  #background-right {
+    top: 0;
+    right: auto; /* Reset the right property */
+    bottom: 50%;
+    left: 0; /* Add left property */
+    width: 100%; /* Set the width to full screen */
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .background-left {
+    top: 50%;
+    left: 0; /* Add left property */
+    right: auto; /* Reset the right property */
+    bottom: 0;
+    width: 100%; /* Set the width to full screen */
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   body {
     overflow: hidden;
     height: 100%;

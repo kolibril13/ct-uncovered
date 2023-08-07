@@ -142,7 +142,7 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
   return (
     <div className="background-left">
       <img
-        id="centered-image"
+        id="scanner-image"
         ref={imageRef}
         className="noselect"
         src={scanner}
