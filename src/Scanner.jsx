@@ -5,27 +5,31 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
   const imageRef = useRef(null);
   const [lastAngle, setLastAngle] = useState(null); // New state variable
 
+  function rangeModulo(a, b) {
+    // make sure a is less than b
+    if (a > b) {
+      [a, b] = [b, a];
+    }
 
-  const rangeModulo = (start, end) => {
-    if (start > end) {
-      [start, end] = [end, start];
-    }
+    // list to store the array of numbers in the range
     let result = [];
-    if ((end - start) <= 10 || (end - start) > 10) {
-      for (let i = start; i <= end; i++) {
-        result.push(i);
-      }
-    } else {
-      for (let i = start; i <= 20; i++) {
-        result.push(i);
-      }
-      for (let i = 1; i <= end; i++) {
+
+    if (b - a <= 10) {
+      for (let i = a; i <= b; i++) {
         result.push(i);
       }
     }
-    return result;  
-  };
-  
+
+    // here we have this break from 18,19,20,0,1,2 and so we have to use modulo.
+    if (b - a > 10) {
+      a = a + 20;
+      for (let i = b; i <= a; i++) {
+        result.push(i % 20);
+      }
+    }
+
+    return result;
+  }
 
   const calculateIndex = (angle) => {
     if (angle >= 0 && angle < 180) {
@@ -35,25 +39,20 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
     }
     return 0; // #TODO: this I sould look again at.
   };
-  
 
   const setAnglesInRange = (startAngle, endAngle) => {
     const startIndex = calculateIndex(startAngle);
     const endIndex = calculateIndex(endAngle);
-  
+
     const angles = rangeModulo(startIndex, endIndex);
-  
-    angles.forEach(angle => {
-      setSelectedAngles(prevAngles => ({
+
+    angles.forEach((angle) => {
+      setSelectedAngles((prevAngles) => ({
         ...prevAngles,
-        [`angle${angle}`]: true,
+        [`angle${angle+1}`]: true,
       }));
     });
   };
-  
-  
-
-  
 
   useEffect(() => {
     if (lastAngle !== null) {
