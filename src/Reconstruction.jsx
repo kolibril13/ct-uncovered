@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import MatrixImage from "./MatrixImage";
 import data from "./assets/ct_slice_730_upper_legs_continuous.json";
 import CircleArcs from './CircleArcs';
 
-function Reconstruction({ selectedAngles }) {
+const Reconstruction = React.memo(function CircleArcs({ selectedAngles }) {
   const [mytracker, setMyTracker] = useState(0);
   const mydata = data["imgs"];
 
@@ -52,5 +52,6 @@ function Reconstruction({ selectedAngles }) {
     </div>
   );
 }
+)
 
 export default Reconstruction;

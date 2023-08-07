@@ -83,7 +83,7 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
 
   useEffect(() => {
     if (prevAngle !== null) {
-      setAnglesInRange(prevAngle, angle); // Call the new function
+      setAnglesInRange(prevAngle, angle); 
     }
     setPrevAngle(angle);
   }, [angle]);

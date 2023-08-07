@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-function CircleArcs({ selectedAngles }) {
+const CircleArcs = React.memo(function CircleArcs({ selectedAngles }) {
   const svgRef = useRef(null);
 
   useEffect(() => {
@@ -67,7 +67,7 @@ function CircleArcs({ selectedAngles }) {
         if (reverse) {
           newElement.setAttribute(
             "stroke",
-            selectedAngles[`angle${i}`] ? colors[19-i] : "lightgrey"
+            selectedAngles[`angle${i}`] ? colors[19 - i] : "lightgrey"
           );
         } else {
           newElement.setAttribute(
@@ -97,6 +97,6 @@ function CircleArcs({ selectedAngles }) {
       <svg className="my_outer_circle" ref={svgRef} viewBox="0 0 400 400" />
     </div>
   );
-}
+});
 
 export default CircleArcs;
