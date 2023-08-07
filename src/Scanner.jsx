@@ -5,48 +5,54 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
   const imageRef = useRef(null);
   const [lastAngle, setLastAngle] = useState(null); // New state variable
 
-  const setAnglesInRange = (startAngle, endAngle) => {
-    // Swap startAngle and endAngle if startAngle is greater
-    if (startAngle > endAngle) {
-      [startAngle, endAngle] = [endAngle, startAngle];
+
+  const rangeModulo = (start, end) => {
+    if (start > end) {
+      [start, end] = [end, start];
     }
-  
-    let startIndex, endIndex;
-  
-    if (startAngle >= 0 && startAngle < 180) {
-      startIndex = Math.floor(startAngle / 9) + 1;
-    } else if (startAngle >= 180 && startAngle < 360) {
-      startIndex = Math.floor((startAngle - 180) / 9) + 1;
-    }
-  
-    if (endAngle >= 0 && endAngle < 180) {
-      endIndex = Math.floor(endAngle / 9) + 1;
-    } else if (endAngle >= 180 && endAngle < 360) {
-      endIndex = Math.floor((endAngle - 180) / 9) + 1;
-    }
-  
-    if ((startIndex <= endIndex && (endIndex - startIndex) <= 10) || (endIndex - startIndex) > 10) {
-      for (let i = startIndex; i <= endIndex; i++) {
-        setSelectedAngles(prevAngles => ({
-          ...prevAngles,
-          [`angle${i}`]: true,
-        }));
+    let result = [];
+    if ((end - start) <= 10 || (end - start) > 10) {
+      for (let i = start; i <= end; i++) {
+        result.push(i);
       }
     } else {
-      for (let i = startIndex; i <= 20; i++) {
-        setSelectedAngles(prevAngles => ({
-          ...prevAngles,
-          [`angle${i}`]: true,
-        }));
+      for (let i = start; i <= 20; i++) {
+        result.push(i);
       }
-      for (let i = 1; i <= endIndex; i++) {
-        setSelectedAngles(prevAngles => ({
-          ...prevAngles,
-          [`angle${i}`]: true,
-        }));
+      for (let i = 1; i <= end; i++) {
+        result.push(i);
       }
     }
+    return result;  
   };
+  
+
+  const calculateIndex = (angle) => {
+    if (angle >= 0 && angle < 180) {
+      return Math.floor(angle / 9) + 1;
+    } else if (angle >= 180 && angle < 360) {
+      return Math.floor((angle - 180) / 9) + 1;
+    }
+    return 0; // #TODO: this I sould look again at.
+  };
+  
+
+  const setAnglesInRange = (startAngle, endAngle) => {
+    const startIndex = calculateIndex(startAngle);
+    const endIndex = calculateIndex(endAngle);
+  
+    const angles = rangeModulo(startIndex, endIndex);
+  
+    angles.forEach(angle => {
+      setSelectedAngles(prevAngles => ({
+        ...prevAngles,
+        [`angle${angle}`]: true,
+      }));
+    });
+  };
+  
+  
+
   
 
   useEffect(() => {
