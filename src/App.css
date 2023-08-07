@@ -69,12 +69,20 @@ filter: drop-shadow(0 0 3em #BC31C9);
 }
 
 @media only screen and (max-width: 768px) { 
-  #background-right {
+
+  body {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+  }
+
+  /* #background-right {
     top: 0;
-    right: auto; /* Reset the right property */
+    right: auto; 
     bottom: 50%;
-    left: 0; /* Add left property */
-    width: 100%; /* Set the width to full screen */
+    left: 0; 
+    width: 100%;
     height: 50%;
     display: flex;
     align-items: center;
@@ -83,20 +91,13 @@ filter: drop-shadow(0 0 3em #BC31C9);
 
   .background-left {
     top: 50%;
-    left: 0; /* Add left property */
-    right: auto; /* Reset the right property */
+    left: 0; 
+    right: auto; 
     bottom: 0;
-    width: 100%; /* Set the width to full screen */
+    width: 100%; 
     height: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  body {
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-  }
+  } */
 }
