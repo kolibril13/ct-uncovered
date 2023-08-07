@@ -108,11 +108,34 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
     document.removeEventListener("mouseup", handleMouseUp);
   };
 
+  // Touch events for smartphone support
+  const handleTouchStart = (e) => {
+    e.preventDefault();
+    const initialAngle = calculateRotation(e.touches[0]);
+    setAngle(initialAngle);
+    setPrevAngle(initialAngle);
+    document.addEventListener("touchmove", handleTouchMove);
+    document.addEventListener("touchend", handleTouchEnd);
+  };
+
+  const handleTouchMove = (e) => {
+    e.preventDefault();
+    const newAngle = calculateRotation(e.touches[0]);
+    setAngle(newAngle);
+  };
+
+  const handleTouchEnd = () => {
+    document.removeEventListener("touchmove", handleTouchMove);
+    document.removeEventListener("touchend", handleTouchEnd);
+  };
+
   useEffect(() => {
     return () => {
       // Remove event listeners when the component is unmounted
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleTouchEnd);
     };
   }, []);
 
@@ -125,6 +148,7 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
         alt="scanner"
         style={{ transform: `rotate(${angle}deg)` }}
         onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
         draggable={false}
       />
     </div>
