@@ -34,27 +34,33 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
       [a, b] = [b, a];
     }
 
+    if (a < 0) {
+      throw new Error("a must be greater than 0");
+    }
+  
+    if (b > 19) {
+      throw new Error("b must be less than 20");
+    }
+  
     // list to store the array of numbers in the range
     let result = [];
-
+  
     if (b - a <= 10) {
       for (let i = a; i <= b; i++) {
         result.push(i);
       }
     }
-
-    // here we have this break from 18,19,20,0,1,2 and so we have to use modulo.
+  
+    // here we have this break from 18,19,0,1,2 and so we have to use modulo.
     if (b - a > 10) {
       a = a + 20;
       for (let i = b; i <= a; i++) {
         result.push(i % 20);
       }
     }
-
+  
     return result;
   }
-
-
 
   const setAnglesInRange = (startAngle, endAngle) => {
     const startIndex = calculateIndex(startAngle);
