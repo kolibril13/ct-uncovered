@@ -3,7 +3,7 @@ import scanner from "./assets/scanner.png";
 
 const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
   const imageRef = useRef(null);
-  const [lastAngle, setLastAngle] = useState(null); // New state variable
+  const [prevAngle, setPrevAngle] = useState(null); // New state variable
 
   const calculateRotation = (e) => {
     //✅✅✅
@@ -85,16 +85,16 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
   };
 
   useEffect(() => {
-    if (lastAngle !== null) {
-      setAnglesInRange(lastAngle, angle); // Call the new function
+    if (prevAngle !== null) {
+      setAnglesInRange(prevAngle, angle); // Call the new function
     }
-    setLastAngle(angle);
+    setPrevAngle(angle);
   }, [angle]);
 
   const handleMouseDown = (e) => {
     const initialAngle = calculateRotation(e);
     setAngle(initialAngle); // Update the angle at the beginning of the drag
-    setLastAngle(initialAngle); // Update the last angle at the beginning of the drag
+    setPrevAngle(initialAngle); // Update the prev angle at the beginning of the drag
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
   };
