@@ -50,3 +50,12 @@ filter: drop-shadow(0 0 3em #BC31C9);
 .noselect {
   user-select: none;
 }
+
+@media only screen and (max-width: 768px) { /* You can adjust the value to target specific devices */
+  body {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+  }
+}
