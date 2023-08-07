@@ -5,6 +5,29 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
   const imageRef = useRef(null);
   const [lastAngle, setLastAngle] = useState(null); // New state variable
 
+  const calculateRotation = (e) => {
+    const rect = imageRef.current.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const rad = Math.atan2(e.clientY - y, e.clientX - x);
+    let deg = rad * (180 / Math.PI) + 180;
+    if (deg >= 360) {
+      deg = deg - 360;
+    }
+    // console.log(deg);
+    return deg;
+  };
+
+
+  const calculateIndex = (angle) => {
+    if (angle >= 0 && angle < 180) {
+      return Math.floor(angle / 9) + 1;
+    } else if (angle >= 180 && angle < 360) {
+      return Math.floor((angle - 180) / 9) + 1;
+    }
+    return 0; // #TODO: this I sould look again at.
+  };
+
   function rangeModulo(a, b) {
     // make sure a is less than b
     if (a > b) {
@@ -31,47 +54,31 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
     return result;
   }
 
-  const calculateIndex = (angle) => {
-    if (angle >= 0 && angle < 180) {
-      return Math.floor(angle / 9) + 1;
-    } else if (angle >= 180 && angle < 360) {
-      return Math.floor((angle - 180) / 9) + 1;
-    }
-    return 0; // #TODO: this I sould look again at.
-  };
+
 
   const setAnglesInRange = (startAngle, endAngle) => {
     const startIndex = calculateIndex(startAngle);
     const endIndex = calculateIndex(endAngle);
+    console.log(startIndex, endIndex)
 
     const angles = rangeModulo(startIndex, endIndex);
 
     angles.forEach((angle) => {
       setSelectedAngles((prevAngles) => ({
         ...prevAngles,
-        [`angle${angle+1}`]: true,
+        [`angle${angle + 1}`]: true,
       }));
     });
   };
+
 
   useEffect(() => {
     if (lastAngle !== null) {
       setAnglesInRange(lastAngle, angle); // Call the new function
     }
-  }, [angle]);
+    setLastAngle(angle); 
 
-  const calculateRotation = (e) => {
-    const rect = imageRef.current.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-    const rad = Math.atan2(e.clientY - y, e.clientX - x);
-    let deg = rad * (180 / Math.PI) + 180;
-    if (deg >= 360) {
-      deg = deg - 360;
-    }
-    console.log(deg);
-    return deg;
-  };
+  }, [angle]);
 
   const handleMouseDown = (e) => {
     const initialAngle = calculateRotation(e);
