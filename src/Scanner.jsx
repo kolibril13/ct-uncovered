@@ -6,6 +6,7 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
   const [lastAngle, setLastAngle] = useState(null); // New state variable
 
   const calculateRotation = (e) => {
+    //✅✅✅
     const rect = imageRef.current.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
     const y = rect.top + rect.height / 2;
@@ -76,8 +77,8 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
 
     angles.forEach((angle) => {
       console.log(`angle${angle}`);
-      setSelectedAngles((prevAngles) => ({
-        ...prevAngles,
+      setSelectedAngles((prevSelectedAngles) => ({
+        ...prevSelectedAngles,
         [`angle${angle}`]: true,
       }));
     });
