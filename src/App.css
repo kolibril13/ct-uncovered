@@ -46,3 +46,7 @@ filter: drop-shadow(0 0 3em #BC31C9);
   border: red solid 2px;
 
 }
+
+.noselect {
+  user-select: none;
+}
