@@ -16,7 +16,7 @@ function Reconstruction({ selectedAngles }) {
 
   // Filter matrices based on selectedAngles
   const selectedMatrices = matrices_from_data.filter((matrix, index) => {
-    const angleKey = `angle${index + 1}`;
+    const angleKey = `angle${index}`;
     return selectedAngles[angleKey];
   });
 
