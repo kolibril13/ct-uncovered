@@ -18,17 +18,22 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
     return deg;
   };
 
-
+  // converts values from 0-180 to 0-19
+  // also, converts values from 180-360 to 0-19.
   const calculateIndex = (angle) => {
+    //✅✅✅
     if (angle >= 0 && angle < 180) {
-      return Math.floor(angle / 9) + 1;
-    } else if (angle >= 180 && angle < 360) {
-      return Math.floor((angle - 180) / 9) + 1;
+      return Math.floor(angle / 9);
+    } else if (angle >= 180 && angle <= 360) {
+      return Math.floor((angle - 180) / 9);
+    } else {
+      throw new Error("angle must be between 0 and 360");
     }
-    return 0; // #TODO: this I sould look again at.
   };
 
+  // this gives the clostest range from to values wich are in the range of 0-19. After 19, 0 comes again.
   function rangeModulo(a, b) {
+    //✅✅✅
     // make sure a is less than b
     if (a > b) {
       [a, b] = [b, a];
@@ -37,20 +42,20 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
     if (a < 0) {
       throw new Error("a must be greater than 0");
     }
-  
+
     if (b > 19) {
       throw new Error("b must be less than 20");
     }
-  
+
     // list to store the array of numbers in the range
     let result = [];
-  
+
     if (b - a <= 10) {
       for (let i = a; i <= b; i++) {
         result.push(i);
       }
     }
-  
+
     // here we have this break from 18,19,0,1,2 and so we have to use modulo.
     if (b - a > 10) {
       a = a + 20;
@@ -58,18 +63,19 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
         result.push(i % 20);
       }
     }
-  
+
     return result;
   }
 
   const setAnglesInRange = (startAngle, endAngle) => {
     const startIndex = calculateIndex(startAngle);
     const endIndex = calculateIndex(endAngle);
-    console.log(startIndex, endIndex)
+    // console.log(startIndex, endIndex);
 
     const angles = rangeModulo(startIndex, endIndex);
 
     angles.forEach((angle) => {
+      console.log(`angle${angle}`);
       setSelectedAngles((prevAngles) => ({
         ...prevAngles,
         [`angle${angle}`]: true,
@@ -77,13 +83,11 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
     });
   };
 
-
   useEffect(() => {
     if (lastAngle !== null) {
       setAnglesInRange(lastAngle, angle); // Call the new function
     }
-    setLastAngle(angle); 
-
+    setLastAngle(angle);
   }, [angle]);
 
   const handleMouseDown = (e) => {

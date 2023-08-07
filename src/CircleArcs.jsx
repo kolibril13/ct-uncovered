@@ -67,12 +67,12 @@ function CircleArcs({ selectedAngles }) {
         if (reverse) {
           newElement.setAttribute(
             "stroke",
-            selectedAngles[`angle${i + 1}`] ? colors[19-i] : "lightgrey"
+            selectedAngles[`angle${i}`] ? colors[19-i] : "lightgrey"
           );
         } else {
           newElement.setAttribute(
             "stroke",
-            selectedAngles[`angle${i + 1}`] ? colors[i] : "lightgrey"
+            selectedAngles[`angle${i}`] ? colors[i] : "lightgrey"
           );
         }
 

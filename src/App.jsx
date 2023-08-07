@@ -13,6 +13,7 @@ function App() {
   const [slices, setSlices] = useState([true, false, false, false]);
   const [angle, setAngle] = useState(-360); // same as 0 but 0 should not be selected on the first render.
   const [selectedAngles, setSelectedAngles] = useState({
+    angle0: false,
     angle1: false,
     angle2: false,
     angle3: false,
@@ -32,7 +33,6 @@ function App() {
     angle17: false,
     angle18: false,
     angle19: false,
-    angle20: false,
   });
 
 
@@ -57,7 +57,7 @@ function App() {
 
   return (
     <>
-      <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
+      {/* <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} /> */}
       <CircleArcs selectedAngles={selectedAngles} />
       <Scanner
         angle={angle}
