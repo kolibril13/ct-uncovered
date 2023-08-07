@@ -29,6 +29,7 @@ html {
   max-width: 60%; /* Adjust as needed */
   max-height: 60%; /* Adjust as needed */
   cursor: pointer;
+  user-select: none;
   /* will-change: filter; */
   /* transition: filter 300ms; */
 }
