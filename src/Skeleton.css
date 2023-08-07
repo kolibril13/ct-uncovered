@@ -21,7 +21,6 @@
 
 .skeletonSvg {
   width: 100%;
-  user-select: none;
 
 }
 
@@ -33,7 +32,6 @@
   left: -25%;
   transform: rotate3d(1, 0, 0, 80deg);
   opacity: 0.3;
-  user-select: none;
 }
 
 

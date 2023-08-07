@@ -43,31 +43,31 @@ function Skeleton({ slices, level, setLevel }) {
   return (
     <div id="background-right">
       <div className="skeleton-canvas">
-        <img src={skeleton} className="skeletonSvg" draggable="false" />
+        <img src={skeleton} className="skeletonSvg noselect" draggable="false" />
         <img
           src={ring}
-          className="ring ring1"
+          className="ring ring1 noselect"
           draggable="false"
           onClick={() => handleClick(0)}
           onTouchStart={() => handleClick(0)}
         />
         <img
           src={ring}
-          className="ring ring2"
+          className="ring ring2 noselect"
           draggable="false"
           onClick={() => handleClick(1)}
           onTouchStart={() => handleClick(1)}
         />
         <img
           src={ring}
-          className="ring ring3"
+          className="ring ring3 noselect"
           draggable="false"
           onClick={() => handleClick(2)}
           onTouchStart={() => handleClick(2)}
         />
         <img
           src={ring}
-          className="ring ring4"
+          className="ring ring4 noselect"
           draggable="false"
           onClick={() => handleClick(3)}
           onTouchStart={() => handleClick(3)}
