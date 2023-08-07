@@ -71,12 +71,9 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
   const setAnglesInRange = (startAngle, endAngle) => {
     const startIndex = calculateIndex(startAngle);
     const endIndex = calculateIndex(endAngle);
-    // console.log(startIndex, endIndex);
-
     const angles = rangeModulo(startIndex, endIndex);
 
     angles.forEach((angle) => {
-      console.log(`angle${angle}`);
       setSelectedAngles((prevSelectedAngles) => ({
         ...prevSelectedAngles,
         [`angle${angle}`]: true,
