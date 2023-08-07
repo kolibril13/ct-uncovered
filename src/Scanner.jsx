@@ -66,7 +66,7 @@ const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
     angles.forEach((angle) => {
       setSelectedAngles((prevAngles) => ({
         ...prevAngles,
-        [`angle${angle + 1}`]: true,
+        [`angle${angle}`]: true,
       }));
     });
   };
