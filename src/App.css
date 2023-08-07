@@ -2,9 +2,11 @@
 
 body,
 html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
 }
 
 #root {
@@ -18,11 +20,15 @@ html {
   position: absolute;
   top: 0;
   left: 0;
-  width: 59.8%; /* Since the right background takes 40.2%, the left should take the remaining space */
+  width: 59.8%;
+  /* Since the right background takes 40.2%, the left should take the remaining space */
   height: 100%;
-  display: flex; /* Flexbox will help us center the image */
-  align-items: center; /* Centers the image vertically */
-  justify-content: center; /* Centers the image horizontally */
+  display: flex;
+  /* Flexbox will help us center the image */
+  align-items: center;
+  /* Centers the image vertically */
+  justify-content: center;
+  /* Centers the image horizontally */
 }
 
 
@@ -40,8 +46,8 @@ html {
 
 
 #scanner-image {
-  max-width: 60%; /* Adjust as needed */
-  max-height: 60%; /* Adjust as needed */
+  /* width: 100%; */
+  width: 60%;
   cursor: pointer;
   /* will-change: filter; */
   /* transition: filter 300ms; */
@@ -53,12 +59,23 @@ filter: drop-shadow(0 0 3em #BC31C9);
 } */
 
 
-.my_outer_circle{
-  width: 480px;
-  height: 480px;
-  border: red solid 2px;
+.my_outer_circle {
+  width: 45%;
+  /* height: 480px; */
+  /* border: red solid 2px; */
 
 }
+
+
+.myprojectionimg {
+  position: absolute;
+  width: 21%;
+  rotate: 90deg;
+}
+
+
+
+
 .noselect {
   user-select: none;
   -webkit-touch-callout: none;
@@ -68,7 +85,7 @@ filter: drop-shadow(0 0 3em #BC31C9);
   -ms-user-select: none;
 }
 
-@media only screen and (max-width: 768px) { 
+@media only screen and (max-width: 768px) {
 
   body {
     overflow: hidden;

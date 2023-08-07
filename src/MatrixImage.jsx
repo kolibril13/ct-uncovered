@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import "./MatrixImage.css";
+// import "./MatrixImage.css";
 
 function MatrixImage({ matrix }) {
   const canvasRef = useRef();
