@@ -12,6 +12,8 @@ function App() {
   const [level, setLevel] = useState(1);
   const [slices, setSlices] = useState([true, false, false, false]);
   const [angle, setAngle] = useState(-360); // same as 0 but 0 should not be selected on the first render.
+  const [showIntro, setShowIntro] = useState(true);
+
   const [selectedAngles, setSelectedAngles] = useState({
     angle0: false,
     angle1: false,
@@ -56,6 +58,7 @@ function App() {
 
   return (
     <>
+      {showIntro && <Intro onStart={() => setShowIntro(false)} />}
       <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
       <CircleArcs selectedAngles={selectedAngles} />
       <Scanner
@@ -64,7 +67,6 @@ function App() {
         selectedAngles={selectedAngles}
         setSelectedAngles={setSelectedAngles}
       />
-      <Intro />
       <Skeleton slices={slices} level={level} setLevel={setLevel} />
     </>
   );

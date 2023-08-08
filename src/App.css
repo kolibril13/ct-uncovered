@@ -23,7 +23,7 @@ html {
 
 .logo {
   border: 5px solid #2D2D51;
-  height: 200px;
+  /* height: 200px; */
   width: 500px;
   padding: 12px;
   display: flex;
