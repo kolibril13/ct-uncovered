@@ -18,11 +18,11 @@ html {
   z-index: 1000;
   display: flex;
   justify-content: center;
+  /* Center horizontally */
 }
 
 .logo {
   border: 10px solid #2D2D51;
-  top: 100px;
   height: 200px;
   width: 500px;
   display: flex;
@@ -30,20 +30,50 @@ html {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #ffffff; /* Completely white background */
+  background-color: #ffffff;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.logo p, .logo h1 {
+.logo p,
+.logo h1,
+.logo button{
   margin: 5px;
   text-align: center;
 }
 
 .logo h1 {
-  font-size: 24px;
+  font-size: 60px;
 }
 
 .logo p {
   font-size: 16px;
+}
+
+
+
+.logo,
+.logo p,
+.logo h1 {
+  font-family: "roc-grotesk-variable", sans-serif;
+  font-variation-settings: 'wdth' 400, 'wght' 100;
+}
+
+button {
+  background: linear-gradient(to right, #9959CD, #3F3986); /* Gradient from left to right */
+  color: #ffffff; /* White text color */
+  width: 150px; /* Set the width */
+  height: 50px; /* Set the height */
+  border: none; /* Remove the default border */
+  font-size: 40px; /* Adjust the font size as needed */
+  cursor: pointer; /* Change the cursor to a pointer on hover */
+  transition: 0.3s; /* Optional: smooth transition for hover effect */
+}
+
+button:hover {
+  background: linear-gradient(to right, #7C47A3, #2D2868); /* Optional: change gradient on hover */
 }
 
 
