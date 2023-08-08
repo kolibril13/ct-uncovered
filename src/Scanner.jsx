@@ -1,9 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import scanner from "./assets/scanner.png";
 
-const Scanner = ({ angle, setAngle, selectedAngles, setSelectedAngles }) => {
+const Scanner = ({ angle, setAngle, prevAngle, setPrevAngle, selectedAngles, setSelectedAngles }) => {
   const imageRef = useRef(null);
-  const [prevAngle, setPrevAngle] = useState(null); // New state variable
 
   const calculateRotation = (e) => {
     //✅✅✅

@@ -8,9 +8,7 @@ html {
   overflow: hidden;
 }
 
-/* .pointingFinger1{
 
-} */
 
 .HideRight {
   background: rgba(255, 255, 255, 0.9);
@@ -139,6 +137,19 @@ button:hover {
   /* Centers the image horizontally */
 }
 
+.pointingFinger1{
+  position: absolute;
+  top: 30%;
+  left: 22%;
+  width: 120px;
+}
+
+.message1{
+  position: absolute;
+  top: 28%;
+  left: 11%;
+  width: 320px;
+}
 
 #background-right {
   position: absolute;

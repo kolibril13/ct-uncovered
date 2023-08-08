@@ -19,7 +19,8 @@ function Sloagan() {
 function App() {
   const jsonData = all_data["imgs"];
   const [level, setLevel] = useState(1);
-  const [slices, setSlices] = useState([true, false, false, false]);
+  const [slices, setSlices] = useState([false, true, false, false]);
+  const [prevAngle, setPrevAngle] = useState(null); // For the reference angle
   const [angle, setAngle] = useState(-360); // same as 0 but 0 should not be selected on the first render.
   const [showIntro, setShowIntro] = useState(true);
 
@@ -57,6 +58,16 @@ function App() {
 
       if (level === 2) {
         setSlices([false, true, false, false]);
+        setSelectedAngles(prevAngles => {
+          const newAngles = {};
+          for (let i = 0; i < 20; i++) {
+            newAngles[`angle${i}`] = false;
+          }
+          return newAngles;
+        });
+        setPrevAngle(null);
+        setAngle(-360);
+  
       } else if (level === 3) {
         setSlices([false, false, true, false]);
       } else if (level === 4) {
@@ -74,22 +85,22 @@ function App() {
         !Object.values(selectedAngles).every((angle) => angle === true) && (
           <>
             <HideRight />
-            <div>Select angles</div>
-            {/* <div className="pointingFinger1">👈</div> */}
-
+            <div className=" pointingFinger1"> Select angles here 👇</div>
           </>
         )}
       {!showIntro &&
         level == 1 &&
         Object.values(selectedAngles).every((angle) => angle === true) && (
           <>
-            <div>
-              Aweseome! <br /> Can you now find out from which slice this image
-              comes from?
+            <div className="message1">
+              Aweseome! <br /> Seems like this is the part of a human body. <br />
+              Can you now find the plane on the right side? 👉
             </div>
             {/* <div className="pointingFinger2">👈</div> */}
           </>
         )}
+        {level == 2 && (Object.values(selectedAngles).every((angle) => angle === false)  
+        && <div className="message1"> Well done! <br/> Now go on with the next slice!</div>)}
 
       <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
       <CircleArcs selectedAngles={selectedAngles} />
@@ -98,6 +109,8 @@ function App() {
         setAngle={setAngle}
         selectedAngles={selectedAngles}
         setSelectedAngles={setSelectedAngles}
+        prevAngle = {prevAngle}
+        setPrevAngle = {setPrevAngle}
       />
       <Skeleton slices={slices} level={level} setLevel={setLevel} />
     </>
