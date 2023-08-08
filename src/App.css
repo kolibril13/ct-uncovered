@@ -16,24 +16,25 @@ html {
   left: 0;
   background: rgba(255, 255, 255, 0.8);
   z-index: 1000;
-  display: flex; /* Add flexbox to center the logo div */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  display: flex;
+  justify-content: center;
 }
 
 .logo {
   border: 10px solid #2D2D51;
+  top: 100px;
   height: 200px;
-  width: 200px; /* You can adjust the width based on your content */
+  width: 500px;
   display: flex;
-  flex-direction: column; /* Stack the children vertically */
-  justify-content: center; /* Center contents vertically */
-  align-items: center; /* Center contents horizontally */
-  text-align: center; /* Center the text within each child element */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff; /* Completely white background */
 }
 
 .logo p, .logo h1 {
-  margin: 5px; /* Add some space between the elements */
+  margin: 5px;
   text-align: center;
 }
 
@@ -44,7 +45,6 @@ html {
 .logo p {
   font-size: 16px;
 }
-
 
 
 #root {
