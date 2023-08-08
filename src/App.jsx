@@ -6,7 +6,6 @@ import CircleArcs from "./CircleArcs";
 import Intro from "./Intro";
 import all_data from "./assets/ct_slice_730_upper_legs_continuous.json";
 
-
 import "./App.css";
 function App() {
   const jsonData = all_data["imgs"];
@@ -36,7 +35,6 @@ function App() {
     angle19: false,
   });
 
-
   // console.log(selectedAngles);
 
   // Remember the previous level
@@ -58,7 +56,6 @@ function App() {
 
   return (
     <>
-    <Intro />
       <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
       <CircleArcs selectedAngles={selectedAngles} />
       <Scanner
@@ -67,6 +64,7 @@ function App() {
         selectedAngles={selectedAngles}
         setSelectedAngles={setSelectedAngles}
       />
+      <Intro />
       <Skeleton slices={slices} level={level} setLevel={setLevel} />
     </>
   );
