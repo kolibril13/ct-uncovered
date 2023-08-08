@@ -7,6 +7,15 @@ import Intro from "./Intro";
 import all_data from "./assets/ct_slice_730_upper_legs_continuous.json";
 
 import "./App.css";
+
+function Sloagan() {
+  return (
+    <div className="slogan">
+      <h1>CT uncovered</h1>
+    </div>
+  );
+}
+
 function App() {
   const jsonData = all_data["imgs"];
   const [level, setLevel] = useState(1);
@@ -59,6 +68,8 @@ function App() {
   return (
     <>
       {showIntro && <Intro onStart={() => setShowIntro(false)} />}
+      {!showIntro && <Sloagan />}
+      {/* <div className="pointingFinger1">👈</div> */}
       <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
       <CircleArcs selectedAngles={selectedAngles} />
       <Scanner

@@ -8,6 +8,20 @@ html {
   overflow: hidden;
 }
 
+
+.slogan {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-family: roc-grotesk, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  /* font-size: 40px; */
+  /* line-height: 48px; */
+  color: #2D2D51;
+}
+
+
 .intro {
   position: fixed;
   top: 0;
@@ -40,7 +54,7 @@ html {
 
 .logo p,
 .logo h1,
-.logo button{
+.logo button {
   margin: 5px;
   text-align: center;
 }
@@ -64,18 +78,27 @@ html {
 }
 
 button {
-  background: linear-gradient(to right, #9959CD, #3F3986); /* Gradient from left to right */
-  color: #ffffff; /* White text color */
-  width: 150px; /* Set the width */
-  height: 50px; /* Set the height */
-  border: none; /* Remove the default border */
-  font-size: 40px; /* Adjust the font size as needed */
-  cursor: pointer; /* Change the cursor to a pointer on hover */
-  transition: 0.3s; /* Optional: smooth transition for hover effect */
+  background: linear-gradient(to right, #9959CD, #3F3986);
+  /* Gradient from left to right */
+  color: #ffffff;
+  /* White text color */
+  width: 150px;
+  /* Set the width */
+  height: 50px;
+  /* Set the height */
+  border: none;
+  /* Remove the default border */
+  font-size: 40px;
+  /* Adjust the font size as needed */
+  cursor: pointer;
+  /* Change the cursor to a pointer on hover */
+  transition: 0.3s;
+  /* Optional: smooth transition for hover effect */
 }
 
 button:hover {
-  background: linear-gradient(to right, #7C47A3, #2D2868); /* Optional: change gradient on hover */
+  background: linear-gradient(to right, #7C47A3, #2D2868);
+  /* Optional: change gradient on hover */
 }
 
 
