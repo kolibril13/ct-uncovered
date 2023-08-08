@@ -6,8 +6,46 @@ html {
   margin: 0;
   padding: 0;
   overflow: hidden;
-
 }
+
+.intro {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+  display: flex; /* Add flexbox to center the logo div */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.logo {
+  border: 10px solid #2D2D51;
+  height: 200px;
+  width: 200px; /* You can adjust the width based on your content */
+  display: flex;
+  flex-direction: column; /* Stack the children vertically */
+  justify-content: center; /* Center contents vertically */
+  align-items: center; /* Center contents horizontally */
+  text-align: center; /* Center the text within each child element */
+}
+
+.logo p, .logo h1 {
+  margin: 5px; /* Add some space between the elements */
+  text-align: center;
+}
+
+.logo h1 {
+  font-size: 24px;
+}
+
+.logo p {
+  font-size: 16px;
+}
+
+
 
 #root {
   max-width: 1280px;
@@ -109,7 +147,7 @@ filter: drop-shadow(0 0 3em #BC31C9);
     width: 34%;
     rotate: 90deg;
   } */
-  /* #background-right {
+/* #background-right {
     top: 0;
     right: auto; 
     bottom: 50%;

@@ -3,10 +3,11 @@ import Scanner from "./Scanner";
 import Skeleton from "./Skeleton";
 import Reconstruction from "./Reconstruction";
 import CircleArcs from "./CircleArcs";
+import Intro from "./Intro";
 import all_data from "./assets/ct_slice_730_upper_legs_continuous.json";
 
-import "./App.css";
 
+import "./App.css";
 function App() {
   const jsonData = all_data["imgs"];
   const [level, setLevel] = useState(1);
@@ -57,6 +58,7 @@ function App() {
 
   return (
     <>
+    <Intro />
       <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
       <CircleArcs selectedAngles={selectedAngles} />
       <Scanner
