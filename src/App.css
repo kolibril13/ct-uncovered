@@ -8,6 +8,21 @@ html {
   overflow: hidden;
 }
 
+/* .pointingFinger1{
+
+} */
+
+.HideRight {
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40.2%;
+  height: 100%;
+
+}
+
 
 .slogan {
   position: absolute;

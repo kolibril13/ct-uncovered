@@ -5,7 +5,7 @@ import Reconstruction from "./Reconstruction";
 import CircleArcs from "./CircleArcs";
 import Intro from "./Intro";
 import all_data from "./assets/ct_slice_730_upper_legs_continuous.json";
-
+import HideRight from "./HideRight";
 import "./App.css";
 
 function Sloagan() {
@@ -69,7 +69,28 @@ function App() {
     <>
       {showIntro && <Intro onStart={() => setShowIntro(false)} />}
       {!showIntro && <Sloagan />}
-      {/* <div className="pointingFinger1">👈</div> */}
+      {!showIntro &&
+        level == 1 &&
+        !Object.values(selectedAngles).every((angle) => angle === true) && (
+          <>
+            <HideRight />
+            <div>Select angles</div>
+            {/* <div className="pointingFinger1">👈</div> */}
+
+          </>
+        )}
+      {!showIntro &&
+        level == 1 &&
+        Object.values(selectedAngles).every((angle) => angle === true) && (
+          <>
+            <div>
+              Aweseome! <br /> Can you now find out from which slice this image
+              comes from?
+            </div>
+            {/* <div className="pointingFinger2">👈</div> */}
+          </>
+        )}
+
       <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
       <CircleArcs selectedAngles={selectedAngles} />
       <Scanner
