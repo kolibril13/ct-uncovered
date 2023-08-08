@@ -85,7 +85,7 @@ filter: drop-shadow(0 0 3em #BC31C9);
   -ms-user-select: none;
 }
 
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
 
   body {
     overflow: hidden;
@@ -95,26 +95,20 @@ filter: drop-shadow(0 0 3em #BC31C9);
   }
 
   #scanner-image {
-    /* width: 100%; */
     width: 100%;
     cursor: pointer;
-    /* will-change: filter; */
-    /* transition: filter 300ms; */
   }
 
   .my_outer_circle {
     width: 75%;
-    /* height: 480px; */
-    /* border: red solid 2px; */
   
   }
-  
   
   .myprojectionimg {
     position: absolute;
     width: 34%;
     rotate: 90deg;
-  }
+  } */
   /* #background-right {
     top: 0;
     right: auto; 
@@ -138,4 +132,4 @@ filter: drop-shadow(0 0 3em #BC31C9);
     align-items: center;
     justify-content: center;
   } */
-}
+/* } */
