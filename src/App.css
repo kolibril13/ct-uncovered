@@ -14,7 +14,7 @@ html {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -22,9 +22,10 @@ html {
 }
 
 .logo {
-  border: 10px solid #2D2D51;
+  border: 5px solid #2D2D51;
   height: 200px;
   width: 500px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,8 +58,9 @@ html {
 .logo,
 .logo p,
 .logo h1 {
-  font-family: "roc-grotesk-variable", sans-serif;
-  font-variation-settings: 'wdth' 400, 'wght' 100;
+  font-family: roc-grotesk, sans-serif;
+  font-style: normal;
+  font-weight: 200;
 }
 
 button {
