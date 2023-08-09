@@ -27,7 +27,7 @@
 
         }
 
-        .top-title {
+        .top-title-box {
             position: absolute;
             width: 100px;
             height: 110px;
@@ -37,6 +37,13 @@
             transform: translate(-50%, 0%);
             z-index: 1;
             border: 2px solid green;
+        }
+
+        .title {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0%);
         }
     </style>
 </head>
@@ -49,7 +56,11 @@
         <div class="container">
             <img src="assets/scanner.png" alt="Snow" style="width:100%;">
 
-            <div class="top-title">Scanner <br /> Hello <br> </div>
+            <div class="top-title-box">
+                <div class="title">
+                    Scanner <br /> Hello <br>
+                </div>
+            </div>
         </div>
     </div>
     <div style="position: absolute; left: 60%; top: 0; width: 40.2%; height: 100%; background-color: #f0f0f0;">
