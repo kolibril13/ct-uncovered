@@ -27,43 +27,12 @@
 
         }
 
-        .bottom-left {
-            position: absolute;
-            bottom: 8px;
-            left: 16px;
-        }
-
-        .top-left {
-            position: absolute;
-            top: 8px;
-            left: 16px;
-        }
-
-        .top-right {
-            position: absolute;
-            top: 8px;
-            right: 16px;
-        }
-
-        .bottom-right {
-            position: absolute;
-            bottom: 8px;
-            right: 16px;
-        }
-
-        .centered {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
         .top-title {
             position: absolute;
             top: -100px;
             /* Set top to 0 to align with the top of the image */
             left: 50%;
-            transform: translate(-50%,0%);
+            transform: translate(-50%, 0%);
             z-index: 1;
             border: 2px solid green;
         }
@@ -72,17 +41,12 @@
 
 <body>
 
-    <h2>Image Text</h2>
-    <p>How to place text over an image:</p>
+    <h2>Example</h2>
     <div class="background-left">
 
         <div class="container">
             <img src="assets/scanner.png" alt="Snow" style="width:100%;">
-            <div class="bottom-left">Bottom Left</div>
-            <div class="top-left">Top Left</div>
-            <div class="top-right">Top Right</div>
-            <div class="bottom-right">Bottom Right</div>
-            <div class="centered">Centered</div>
+
             <h1 class="top-title">Scanner <br /> Hello <br> </h1>
         </div>
     </div>
