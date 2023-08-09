@@ -17,14 +17,8 @@
             flex-direction: column; /* Aligns items vertically */
         }
 
-        .scanner-title {
-            text-align: center; /* Centers the text horizontally */
-            position: absolute; /* Absolute positioning for the title */
-            bottom: 50%; /* Positions the title above the image */
-            transform: translateY(-100%); /* Moves the title above the container */
-        }
-
         .scanner-image-container {
+            position: relative; /* Relative positioning to contain absolute children */
             width: 60%;
             height: 60%;
             display: flex;
@@ -32,9 +26,20 @@
             align-items: center;
         }
 
+        .scanner-title {
+            text-align: center; /* Centers the text horizontally */
+            position: absolute; /* Absolute positioning for the title */
+            top: 0; /* Aligns the title at the top of the container */
+            left: 50%;
+            transform: translateX(-50%); /* Centers the title horizontally */
+            z-index: 1; /* Keeps the title above the image */
+            border: 2px solid green;
+        }
+
         .scanner-image {
             cursor: pointer;
             width: 100%;
+            border: 2px solid black;
         }
     </style>
 </head>
