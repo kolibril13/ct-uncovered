@@ -60,9 +60,10 @@
 
         .top-title {
             position: absolute;
-            top: -50%; /* Todo: make this always stay on top */
+            top: -100px;
+            /* Set top to 0 to align with the top of the image */
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%,0%);
             z-index: 1;
             border: 2px solid green;
         }
@@ -82,7 +83,7 @@
             <div class="top-right">Top Right</div>
             <div class="bottom-right">Bottom Right</div>
             <div class="centered">Centered</div>
-            <h1 class="top-title">Scanner <br /> Hello</h1>
+            <h1 class="top-title">Scanner <br /> Hello <br> </h1>
         </div>
     </div>
     <div style="position: absolute; left: 60%; top: 0; width: 40.2%; height: 100%; background-color: #f0f0f0;">
