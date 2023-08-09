@@ -12,25 +12,38 @@
             width: 59.8%;
             height: 100%;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: center; /* Centers the items vertically */
+            justify-content: center; /* Centers the items horizontally */
             flex-direction: column; /* Aligns items vertically */
         }
 
         .scanner-title {
             text-align: center; /* Centers the text horizontally */
+            position: absolute; /* Absolute positioning for the title */
+            bottom: 50%; /* Positions the title above the image */
+            transform: translateY(-100%); /* Moves the title above the container */
+        }
+
+        .scanner-image-container {
+            width: 60%;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .scanner-image {
-            width: 60%;
             cursor: pointer;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <div class="background-left">
-      <h1 class="scanner-title">Scanner <br/> Hello  </h1> <!-- Apply the class to the h1 -->
-        <img src="assets/scanner.png" alt="Scanner Image" class="scanner-image" onclick="alert('Image Clicked!')">
+        <div class="scanner-image-container">
+            <h1 class="scanner-title">Scanner <br/> Hello</h1>
+            <img src="assets/scanner.png" alt="Scanner Image" class="scanner-image" onclick="alert('Image Clicked!')">
+        </div>
     </div>
     <div style="position: absolute; left: 60%; top: 0; width: 40.2%; height: 100%; background-color: #f0f0f0;">
     </div>
