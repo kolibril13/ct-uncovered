@@ -8,6 +8,7 @@ const Scanner = ({
   setPrevAngle,
   selectedAngles,
   setSelectedAngles,
+  showAngleSelectionHint,
 }) => {
   const imageRef = useRef(null);
 
@@ -149,24 +150,27 @@ const Scanner = ({
     <>
       <div className="background-left">
         <div className="container-for-scanner">
-        <img
-          className="scanner-image noselect"
-          ref={imageRef}
-          src={scanner}
-          alt="scanner"
-          style={{ 
-            width: "100%",
-            transform: `rotate(${angle}deg)` }}
-          onMouseDown={handleMouseDown}
-          onTouchStart={handleTouchStart}
-          draggable={false}
-        />
+          <img
+            className="scanner-image noselect"
+            ref={imageRef}
+            src={scanner}
+            alt="scanner"
+            style={{
+              width: "100%",
+              transform: `rotate(${angle}deg)`,
+            }}
+            onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
+            draggable={false}
+          />
 
-          <div className="top-scanner-title-box">
-            <div className="scanner-title">
-              Select angles here <br /> 👇
+          {showAngleSelectionHint && (
+            <div className="top-scanner-title-box">
+              <div className="scanner-title">
+                Select angles here <br /> 👇
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </>

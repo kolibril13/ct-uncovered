@@ -77,16 +77,16 @@ function App() {
     }
   }, [level]); // Re-run the effect when `level` changes
 
+  const showAngleSelectionHint =
+  !showIntro && level === 1 && !Object.values(selectedAngles).every((angle) => angle === true);
+
   return (
     <>
       {showIntro && <Intro onStart={() => setShowIntro(false)} />}
       {!showIntro && <Sloagan />}
-      {!showIntro &&
-        level == 1 &&
-        !Object.values(selectedAngles).every((angle) => angle === true) && (
+      {showAngleSelectionHint && (
           <>
             <HideRight />
-            {/* // activate here */}
           </>
         )}
       {!showIntro &&
@@ -108,10 +108,11 @@ function App() {
       <Scanner
         angle={angle}
         setAngle={setAngle}
-        selectedAngles={selectedAngles}
-        setSelectedAngles={setSelectedAngles}
         prevAngle = {prevAngle}
         setPrevAngle = {setPrevAngle}
+        selectedAngles={selectedAngles}
+        setSelectedAngles={setSelectedAngles}
+        showAngleSelectionHint={showAngleSelectionHint}
       />
       <Skeleton slices={slices} level={level} setLevel={setLevel} />
     </>
