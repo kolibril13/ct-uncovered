@@ -164,7 +164,7 @@ button:hover {
 
 
 
-#scanner-image {
+.scanner-image {
   /* width: 100%; */
   width: 60%;
   cursor: pointer;
@@ -172,7 +172,7 @@ button:hover {
   /* transition: filter 300ms; */
 }
 
-/* #scanner-image:hover {
+/* .scanner-image:hover {
 filter: drop-shadow(0 0 3em #BC31C9);
 
 } */
@@ -194,7 +194,6 @@ filter: drop-shadow(0 0 3em #BC31C9);
 
 
 
-
 .noselect {
   user-select: none;
   -webkit-touch-callout: none;
@@ -213,7 +212,7 @@ filter: drop-shadow(0 0 3em #BC31C9);
     position: fixed;
   }
 
-  #scanner-image {
+  .scanner-image {
     width: 100%;
     cursor: pointer;
   }

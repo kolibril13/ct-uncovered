@@ -141,9 +141,8 @@ const Scanner = ({ angle, setAngle, prevAngle, setPrevAngle, selectedAngles, set
   return (
     <div className="background-left">
       <img
-        id="scanner-image"
+        className="scanner-image noselect"
         ref={imageRef}
-        className="noselect"
         src={scanner}
         alt="scanner"
         style={{ transform: `rotate(${angle}deg)` }}

@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <style>
-        body,
-        html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        #myDiv {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 38.2%;
-            height: 100%;
-            background: url("./assets/Hintergrund2.svg");
-            background-blend-mode: screen;
-            background-size: cover;
-        }
-    </style>
+  <style>
+    .div2 {
+      position: fixed; /* Positioned relative to the viewport */
+      top: 200px; /* Adjust these coordinates */
+      left: 200px;
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+    }
+    .div3 {
+      position: fixed; /* Positioned relative to the viewport */
+      top: 305px; /* Top of div2 + height of div2 + buffer */
+      left: 200px; /* Same left as div2 */
+      width: 60%;
+      height: 100px;
+      background-color: yellow;
+    }
+  </style>
 </head>
-
 <body>
-
-    <div id="myDiv">
-        
-    </div>
-
+  <div class="div2"> Hello world</div>
+  <div class="div3"></div>
 </body>
-
 </html>
