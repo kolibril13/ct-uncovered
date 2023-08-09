@@ -22,7 +22,8 @@ function App() {
   const [slices, setSlices] = useState([false, true, false, false]);
   const [prevAngle, setPrevAngle] = useState(null); // For the reference angle
   const [angle, setAngle] = useState(-360); // same as 0 but 0 should not be selected on the first render.
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
+  // set true for production
 
   const [selectedAngles, setSelectedAngles] = useState({
     angle0: false,
@@ -85,7 +86,7 @@ function App() {
         !Object.values(selectedAngles).every((angle) => angle === true) && (
           <>
             <HideRight />
-            <div className=" pointingFinger1"> Select angles here 👇</div>
+            {/* // activate here */}
           </>
         )}
       {!showIntro &&

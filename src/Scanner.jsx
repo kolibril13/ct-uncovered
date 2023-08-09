@@ -1,7 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import scanner from "./assets/scanner.png";
 
-const Scanner = ({ angle, setAngle, prevAngle, setPrevAngle, selectedAngles, setSelectedAngles }) => {
+const Scanner = ({
+  angle,
+  setAngle,
+  prevAngle,
+  setPrevAngle,
+  selectedAngles,
+  setSelectedAngles,
+}) => {
   const imageRef = useRef(null);
 
   const calculateRotation = (e) => {
@@ -82,7 +89,7 @@ const Scanner = ({ angle, setAngle, prevAngle, setPrevAngle, selectedAngles, set
 
   useEffect(() => {
     if (prevAngle !== null) {
-      setAnglesInRange(prevAngle, angle); 
+      setAnglesInRange(prevAngle, angle);
     }
     setPrevAngle(angle);
   }, [angle]);
@@ -139,18 +146,25 @@ const Scanner = ({ angle, setAngle, prevAngle, setPrevAngle, selectedAngles, set
   }, []);
 
   return (
-    <div className="background-left">
-      <img
-        className="scanner-image noselect"
-        ref={imageRef}
-        src={scanner}
-        alt="scanner"
-        style={{ transform: `rotate(${angle}deg)` }}
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleTouchStart}
-        draggable={false}
-      />
-    </div>
+    <>
+      <div className="background-left">
+        <img
+          className="scanner-image noselect"
+          ref={imageRef}
+          src={scanner}
+          alt="scanner"
+          style={{ transform: `rotate(${angle}deg)` }}
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleTouchStart}
+          draggable={false}
+        />
+      </div>
+      <div class="top-scanner-title-box">
+        <div class="scanner-title">
+          Select angles here <br /> 👇
+        </div>
+      </div>
+    </>
   );
 };
 
