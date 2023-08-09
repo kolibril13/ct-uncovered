@@ -151,7 +151,7 @@ button:hover {
   width: 320px;
 }
 
-#background-right {
+.background-right {
   position: absolute;
   top: 0;
   right: 0;
@@ -227,7 +227,7 @@ filter: drop-shadow(0 0 3em #BC31C9);
     width: 34%;
     rotate: 90deg;
   } */
-/* #background-right {
+/* .wbackground-right {
     top: 0;
     right: auto; 
     bottom: 50%;

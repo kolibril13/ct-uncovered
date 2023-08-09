@@ -41,7 +41,7 @@ function Skeleton({ slices, level, setLevel }) {
   };
 
   return (
-    <div id="background-right">
+    <div className="background-right">
       <div className="skeleton-canvas">
         <img src={skeleton} className="skeletonSvg noselect" draggable="false" />
         <img
