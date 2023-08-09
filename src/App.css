@@ -137,6 +137,14 @@ button:hover {
   /* Centers the image horizontally */
 }
 
+
+.scanner-image {
+  width: 60%;
+  cursor: pointer;
+  /* will-change: filter; */
+  /* transition: filter 300ms; */
+}
+
 .pointingFinger1{
   position: absolute;
   top: 30%;
@@ -164,13 +172,6 @@ button:hover {
 
 
 
-.scanner-image {
-  /* width: 100%; */
-  width: 60%;
-  cursor: pointer;
-  /* will-change: filter; */
-  /* transition: filter 300ms; */
-}
 
 /* .scanner-image:hover {
 filter: drop-shadow(0 0 3em #BC31C9);

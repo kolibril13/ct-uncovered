@@ -1,27 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <style>
-    .div2 {
-      position: fixed; /* Positioned relative to the viewport */
-      top: 200px; /* Adjust these coordinates */
-      left: 200px;
-      width: 100px;
-      height: 100px;
-      background-color: blue;
-    }
-    .div3 {
-      position: fixed; /* Positioned relative to the viewport */
-      top: 305px; /* Top of div2 + height of div2 + buffer */
-      left: 200px; /* Same left as div2 */
-      width: 60%;
-      height: 100px;
-      background-color: yellow;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <style>
+        .background-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 59.8%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; /* Aligns items vertically */
+        }
+
+        .scanner-title {
+            text-align: center; /* Centers the text horizontally */
+        }
+
+        .scanner-image {
+            width: 60%;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <div class="div2"> Hello world</div>
-  <div class="div3"></div>
+    <div class="background-left">
+      <h1 class="scanner-title">Scanner <br/> Hello  </h1> <!-- Apply the class to the h1 -->
+        <img src="assets/scanner.png" alt="Scanner Image" class="scanner-image" onclick="alert('Image Clicked!')">
+    </div>
+    <div style="position: absolute; left: 60%; top: 0; width: 40.2%; height: 100%; background-color: #f0f0f0;">
+    </div>
 </body>
 </html>
