@@ -148,20 +148,25 @@ const Scanner = ({
   return (
     <>
       <div className="background-left">
+        <div className="container-for-scanner">
         <img
           className="scanner-image noselect"
           ref={imageRef}
           src={scanner}
           alt="scanner"
-          style={{ transform: `rotate(${angle}deg)` }}
+          style={{ 
+            width: "100%",
+            transform: `rotate(${angle}deg)` }}
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
           draggable={false}
         />
-      </div>
-      <div class="top-scanner-title-box">
-        <div class="scanner-title">
-          Select angles here <br /> 👇
+
+          <div className="top-scanner-title-box">
+            <div className="scanner-title">
+              Select angles here <br /> 👇
+            </div>
+          </div>
         </div>
       </div>
     </>
