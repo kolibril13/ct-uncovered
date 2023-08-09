@@ -59,7 +59,7 @@ function App() {
 
       if (level === 2) {
         setSlices([false, true, false, false]);
-        setSelectedAngles(prevAngles => {
+        setSelectedAngles((prevAngles) => {
           const newAngles = {};
           for (let i = 0; i < 20; i++) {
             newAngles[`angle${i}`] = false;
@@ -68,7 +68,6 @@ function App() {
         });
         setPrevAngle(null);
         setAngle(-360);
-  
       } else if (level === 3) {
         setSlices([false, false, true, false]);
       } else if (level === 4) {
@@ -78,41 +77,68 @@ function App() {
   }, [level]); // Re-run the effect when `level` changes
 
   const showAngleSelectionHint =
-  !showIntro && level === 1 && !Object.values(selectedAngles).every((angle) => angle === true);
+    !showIntro &&
+    level === 1 &&
+    !Object.values(selectedAngles).every((angle) => angle === true);
+
+  const allAnglesSelectedHint =
+    !showIntro &&
+    level == 1 &&
+    Object.values(selectedAngles).every((angle) => angle === true);
+
+  const startLevel2Hint =
+    level == 2 &&
+    Object.values(selectedAngles).every((angle) => angle === false);
+
+  let MessageOverScanner = () => <div></div>;
+
+  if (showAngleSelectionHint) {
+    MessageOverScanner = () => (
+      <div>
+        Select angles here <br /> 👇
+      </div>
+    );
+  }
+
+  if (allAnglesSelectedHint) {
+    MessageOverScanner = () => (
+      <>
+        {/* <div className="message1"> */}
+        Aweseome! <br /> Seems like this is the part of a human body. <br />
+        Can you now find the plane on the right side? 👉
+        {/* </div> */}
+      </>
+    );
+  }
+
+  if (startLevel2Hint) {
+    MessageOverScanner = () => (
+      <div>
+        Well done! <br /> Now go on with the next slice!
+      </div>
+    );
+  }
 
   return (
     <>
       {showIntro && <Intro onStart={() => setShowIntro(false)} />}
       {!showIntro && <Sloagan />}
       {showAngleSelectionHint && (
-          <>
-            <HideRight />
-          </>
-        )}
-      {!showIntro &&
-        level == 1 &&
-        Object.values(selectedAngles).every((angle) => angle === true) && (
-          <>
-            <div className="message1">
-              Aweseome! <br /> Seems like this is the part of a human body. <br />
-              Can you now find the plane on the right side? 👉
-            </div>
-            {/* <div className="pointingFinger2">👈</div> */}
-          </>
-        )}
-        {level == 2 && (Object.values(selectedAngles).every((angle) => angle === false)  
-        && <div className="message1"> Well done! <br/> Now go on with the next slice!</div>)}
+        <>
+          <HideRight />
+        </>
+      )}
 
       <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
       <CircleArcs selectedAngles={selectedAngles} />
       <Scanner
         angle={angle}
         setAngle={setAngle}
-        prevAngle = {prevAngle}
-        setPrevAngle = {setPrevAngle}
+        prevAngle={prevAngle}
+        setPrevAngle={setPrevAngle}
         selectedAngles={selectedAngles}
         setSelectedAngles={setSelectedAngles}
-        showAngleSelectionHint={showAngleSelectionHint}
+        MessageOverScanner={MessageOverScanner}
       />
       <Skeleton slices={slices} level={level} setLevel={setLevel} />
     </>

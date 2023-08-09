@@ -8,7 +8,7 @@ const Scanner = ({
   setPrevAngle,
   selectedAngles,
   setSelectedAngles,
-  showAngleSelectionHint,
+  MessageOverScanner,
 }) => {
   const imageRef = useRef(null);
 
@@ -164,13 +164,11 @@ const Scanner = ({
             draggable={false}
           />
 
-          {showAngleSelectionHint && (
-            <div className="top-scanner-title-box">
-              <div className="scanner-title">
-                Select angles here <br /> 👇
-              </div>
+          <div className="top-scanner-title-box">
+            <div className="scanner-title">
+              <MessageOverScanner />
             </div>
-          )}
+          </div>
         </div>
       </div>
     </>
