@@ -4,6 +4,7 @@ import Skeleton from "./Skeleton";
 import Reconstruction from "./Reconstruction";
 import CircleArcs from "./CircleArcs";
 import Intro from "./Intro";
+import Outro from "./Outro";
 import HideRight from "./HideRight";
 import "./App.css";
 import pako from 'pako';
@@ -36,7 +37,7 @@ function App() {
     if (level === 4) {
       url = "ct_slice_69_feet.json.gzip";
     }
-    if (level > 5) {
+    if (level >= 5) {
       url = "ct_slice_69_feet.json.gzip";
     }
   
@@ -186,7 +187,7 @@ function App() {
   return (
     <>
       {showIntro && <Intro onStart={() => setShowIntro(false)} />}
-      {/* {showOutro && <Intro onStart={() => setShowOutro(false)} />} */}
+      {level ==5 && showOutro && <Outro onStart={() => setShowOutro(false)} />}
 
       {!showIntro && <Slogan />}
       {showAngleSelectionHint && (

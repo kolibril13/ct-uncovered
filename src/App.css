@@ -280,22 +280,25 @@ filter: drop-shadow(0 0 3em #BC31C9);
   display: flex;
   text-align: center;
   justify-content: center;
-  color: green;
+  color: #2D2D51;
+  font-family: roc-grotesk, sans-serif;
+  font-style: normal;
+  font-weight: 200;
   width: 60%;
-  border: 2px solid orange;
+  /* border: 2px solid orange; */
 
 
 }
 
 .top-scanner-title-box {
   position: absolute;
-  width: 800px;
+  width: 900px;
   height: 110px;
   top: -120px;
   left: 50%;
   transform: translate(-50%, 0%);
   z-index: 1;
-  border: 2px solid green;
+  /* border: 2px solid green; */
 }
 
 .scanner-title {
