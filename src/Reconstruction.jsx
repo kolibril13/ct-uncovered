@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-wimport MatrixImage from "./MatrixImage";
+import MatrixImage from "./MatrixImage";
 
 const Reconstruction = React.memo(function CircleArcs({
   selectedAngles,
