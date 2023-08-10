@@ -7,7 +7,7 @@ import Intro from "./Intro";
 import Outro from "./Outro";
 import HideRight from "./HideRight";
 import "./App.css";
-import pako from 'pako';
+import pako from "pako";
 
 function Slogan() {
   return (
@@ -40,7 +40,7 @@ function App() {
     if (level >= 5) {
       url = "ct_slice_69_feet.json.gzip";
     }
-  
+
     fetch(url)
       .then((response) => response.arrayBuffer())
       .then((buffer) => {
@@ -53,7 +53,6 @@ function App() {
       .then((data) => setTestData(data))
       .catch((error) => console.error("There was an error!", error));
   }, [level]);
-
 
   const [selectedAngles, setSelectedAngles] = useState({
     angle0: false,
@@ -86,8 +85,22 @@ function App() {
   useEffect(() => {
     if (level > prevLevel) {
       // console.log(`Level increased to ${level}`);
+      if (level === 1) {
+        // only for debugging
+        setShowOutro(true);
 
-      if (level === 2) {
+        ///        feet                 head
+        setSlices([false, true, false, false]);
+        setSelectedAngles((prevAngles) => {
+          const newAngles = {};
+          for (let i = 0; i < 20; i++) {
+            newAngles[`angle${i}`] = false;
+          }
+          return newAngles;
+        });
+        setPrevAngle(null);
+        setAngle(-360);
+      } else if (level === 2) {
         // only for debugging
         setShowOutro(true);
 
@@ -125,19 +138,6 @@ function App() {
         setPrevAngle(null);
         setAngle(-360);
       }
-    } else if (level === 5) {
-      setSlices([false, false, false, false]);
-      setSelectedAngles((prevAngles) => {
-
-        const newAngles = {};
-        for (let i = 0; i < 20; i++) {
-          newAngles[`angle${i}`] = false;
-        }
-        return newAngles;
-      });
-      setPrevAngle(null);
-      setAngle(-360);
-      setShowOutro(true);
     }
   }, [level]); // Re-run the effect when `level` changes
 
@@ -187,7 +187,14 @@ function App() {
   return (
     <>
       {showIntro && <Intro onStart={() => setShowIntro(false)} />}
-      {level ==5 && showOutro && <Outro onStart={() => setShowOutro(false)} />}
+      {level == 5 && showOutro && (
+        <Outro
+          onStart={() => {
+            setLevel(1);
+            setShowOutro(false);
+          }}
+        />
+      )}
 
       {!showIntro && <Slogan />}
       {showAngleSelectionHint && (
@@ -196,7 +203,11 @@ function App() {
         </>
       )}
 
-      <Reconstruction selectedAngles={selectedAngles} level={level} uncompressedData={testData} />
+      <Reconstruction
+        selectedAngles={selectedAngles}
+        level={level}
+        uncompressedData={testData}
+      />
       <CircleArcs selectedAngles={selectedAngles} />
       <Scanner
         angle={angle}
