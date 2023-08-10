@@ -139,8 +139,11 @@ button:hover {
 
 
 .scanner-image {
-  width: 60%;
+  width: 100%;
   cursor: pointer;
+  /* position: absolute; */
+  /* left: 50%; */
+
   /* will-change: filter; */
   /* transition: filter 300ms; */
 }
@@ -274,7 +277,9 @@ filter: drop-shadow(0 0 3em #BC31C9);
 
 .container-for-scanner {
   position: relative;
+  display: flex;
   text-align: center;
+  justify-content: center;
   color: green;
   width: 60%;
   border: 2px solid orange;

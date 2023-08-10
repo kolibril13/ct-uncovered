@@ -156,7 +156,6 @@ const Scanner = ({
             src={scanner}
             alt="scanner"
             style={{
-              width: "100%",
               transform: `rotate(${angle}deg)`,
             }}
             onMouseDown={handleMouseDown}
