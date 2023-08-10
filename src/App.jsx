@@ -4,11 +4,10 @@ import Skeleton from "./Skeleton";
 import Reconstruction from "./Reconstruction";
 import CircleArcs from "./CircleArcs";
 import Intro from "./Intro";
-import all_data from "./assets/ct_slice_730_upper_legs_continuous.json";
 import HideRight from "./HideRight";
 import "./App.css";
 
-function Sloagan() {
+function Slogan() {
   return (
     <div className="slogan">
       <h1>CT uncovered</h1>
@@ -17,13 +16,13 @@ function Sloagan() {
 }
 
 function App() {
-  const jsonData = all_data["imgs"];
   const [level, setLevel] = useState(1);
   const [slices, setSlices] = useState([false, true, false, false]);
   const [prevAngle, setPrevAngle] = useState(null); // For the reference angle
   const [angle, setAngle] = useState(-360); // same as 0 but 0 should not be selected on the first render.
-  const [showIntro, setShowIntro] = useState(false);
-  // set true for production
+  const [showIntro, setShowIntro] = useState(true);
+  const [showOutro, setShowOutro] = useState(false);
+
 
   const [selectedAngles, setSelectedAngles] = useState({
     angle0: false,
@@ -58,7 +57,11 @@ function App() {
       // console.log(`Level increased to ${level}`);
 
       if (level === 2) {
-        setSlices([false, true, false, false]);
+        // only for debugging
+        setShowOutro(true);
+
+        ///        feet                 head
+        setSlices([false, false, false, true]);
         setSelectedAngles((prevAngles) => {
           const newAngles = {};
           for (let i = 0; i < 20; i++) {
@@ -70,9 +73,29 @@ function App() {
         setAngle(-360);
       } else if (level === 3) {
         setSlices([false, false, true, false]);
+        setSelectedAngles((prevAngles) => {
+          const newAngles = {};
+          for (let i = 0; i < 20; i++) {
+            newAngles[`angle${i}`] = false;
+          }
+          return newAngles;
+        });
+        setPrevAngle(null);
+        setAngle(-360);
       } else if (level === 4) {
-        setSlices([false, false, false, true]);
+        setSlices([true, false, false, false]);
+        setSelectedAngles((prevAngles) => {
+          const newAngles = {};
+          for (let i = 0; i < 20; i++) {
+            newAngles[`angle${i}`] = false;
+          }
+          return newAngles;
+        });
+        setPrevAngle(null);
+        setAngle(-360);
       }
+    } else if (level === 5) {
+      setShowOutro(true);
     }
   }, [level]); // Re-run the effect when `level` changes
 
@@ -122,14 +145,16 @@ function App() {
   return (
     <>
       {showIntro && <Intro onStart={() => setShowIntro(false)} />}
-      {!showIntro && <Sloagan />}
+      {showOutro && <Intro onStart={() => setShowOutro(false)} />}
+
+      {!showIntro && <Slogan />}
       {showAngleSelectionHint && (
         <>
           <HideRight />
         </>
       )}
 
-      <Reconstruction jsonData={jsonData} selectedAngles={selectedAngles} />
+      <Reconstruction selectedAngles={selectedAngles} level={level} />
       <CircleArcs selectedAngles={selectedAngles} />
       <Scanner
         angle={angle}
