@@ -1,9 +1,22 @@
 import React, { useState, useRef, useEffect } from "react";
 import MatrixImage from "./MatrixImage";
-import data from "./assets/ct_slice_730_upper_legs_continuous.json";
-import CircleArcs from './CircleArcs';
+import dataA from "./assets/ct_slice_730_upper_legs_continuous.json";
+// import dataB from "./assets/ct_slice_1542_teeth_continuous.json";
+// import dataC from "./assets/ct_slice_1342_breast_continuous.json";
 
-const Reconstruction = React.memo(function CircleArcs({ selectedAngles }) {
+const Reconstruction = React.memo(function CircleArcs({
+  selectedAngles,
+  level,
+}) {
+  let data;
+  data = dataA;
+  // if (level === 2) {
+  //   data = dataB;
+  // }
+  // if (level === 3) {
+  //   data = dataC;
+  // }
+
   const [mytracker, setMyTracker] = useState(0);
   const mydata = data["imgs"];
 
@@ -20,7 +33,7 @@ const Reconstruction = React.memo(function CircleArcs({ selectedAngles }) {
     return selectedAngles[angleKey];
   });
 
-  var start = new Date().valueOf();
+  // var start = new Date().valueOf();
 
   // Create an empty matrix to store the result
   const resultMatrix = new Array(360)
@@ -35,7 +48,7 @@ const Reconstruction = React.memo(function CircleArcs({ selectedAngles }) {
       }
     }
   }
-  let duration = new Date().valueOf() - start;
+  // let duration = new Date().valueOf() - start;
 
   function handleClick() {
     setMyTracker(mytracker + 1);
@@ -48,10 +61,8 @@ const Reconstruction = React.memo(function CircleArcs({ selectedAngles }) {
       {/* <button onClick={handleClick}>Restart</button> */}
       <MatrixImage matrix={resultMatrix} />
       {/* <CircleArcs selectedAngles={selectedAngles} /> */}
-
     </div>
   );
-}
-)
+});
 
 export default Reconstruction;
