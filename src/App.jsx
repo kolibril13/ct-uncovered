@@ -25,20 +25,33 @@ function App() {
   const [showOutro, setShowOutro] = useState(false);
 
   const [testData, setTestData] = useState(null);
-  // ct_slice_730_upper_legs.json.gzip
   useEffect(() => {
-    fetch("ct_slice_69_feet.json.gzip")
-    .then((response) => response.arrayBuffer())
-    .then((buffer) => {
-      // Decompress the data using pako
-      const decompressedData = pako.inflate(new Uint8Array(buffer), {
-        to: "string",
-      });
+    let url = "ct_slice_730_upper_legs.json.gzip";
+    if (level === 2) {
+      url = "ct_slice_1542_teeth.json.gzip";
+    }
+    if (level === 3) {
+      url = "ct_slice_1342_breast.json.gzip";
+    }
+    if (level === 4) {
+      url = "ct_slice_69_feet.json.gzip";
+    }
+    if (level > 5) {
+      url = "ct_slice_69_feet.json.gzip";
+    }
+  
+    fetch(url)
+      .then((response) => response.arrayBuffer())
+      .then((buffer) => {
+        // Decompress the data using pako
+        const decompressedData = pako.inflate(new Uint8Array(buffer), {
+          to: "string",
+        });
         return JSON.parse(decompressedData);
       })
       .then((data) => setTestData(data))
       .catch((error) => console.error("There was an error!", error));
-  }, []);
+  }, [level]);
 
 
   const [selectedAngles, setSelectedAngles] = useState({
@@ -112,6 +125,17 @@ function App() {
         setAngle(-360);
       }
     } else if (level === 5) {
+      setSlices([false, false, false, false]);
+      setSelectedAngles((prevAngles) => {
+
+        const newAngles = {};
+        for (let i = 0; i < 20; i++) {
+          newAngles[`angle${i}`] = false;
+        }
+        return newAngles;
+      });
+      setPrevAngle(null);
+      setAngle(-360);
       setShowOutro(true);
     }
   }, [level]); // Re-run the effect when `level` changes
@@ -162,7 +186,7 @@ function App() {
   return (
     <>
       {showIntro && <Intro onStart={() => setShowIntro(false)} />}
-      {showOutro && <Intro onStart={() => setShowOutro(false)} />}
+      {/* {showOutro && <Intro onStart={() => setShowOutro(false)} />} */}
 
       {!showIntro && <Slogan />}
       {showAngleSelectionHint && (
