@@ -25,7 +25,7 @@ function App() {
   const [showOutro, setShowOutro] = useState(false);
 
   const [testData, setTestData] = useState(null);
-
+  // ct_slice_730_upper_legs.json.gzip
   useEffect(() => {
     fetch("ct_slice_69_feet.json.gzip")
     .then((response) => response.arrayBuffer())
