@@ -1,31 +1,18 @@
 import React, { useState, useRef, useEffect } from "react";
-import MatrixImage from "./MatrixImage";
-import dataA from "./assets/ct_slice_730_upper_legs_continuous.json";
-// import dataB from "./assets/ct_slice_1542_teeth_continuous.json";
-// import dataC from "./assets/ct_slice_1342_breast_continuous.json";
+wimport MatrixImage from "./MatrixImage";
 
 const Reconstruction = React.memo(function CircleArcs({
   selectedAngles,
-  level,
+  uncompressedData,
 }) {
-  let data;
-  data = dataA;
-  // if (level === 2) {
-  //   data = dataB;
-  // }
-  // if (level === 3) {
-  //   data = dataC;
-  // }
-
   const [mytracker, setMyTracker] = useState(0);
-  const mydata = data["imgs"];
 
+  // Check if uncompressedData is null and render a loading message
+  if (!uncompressedData) {
+    return <p>Loading...</p>;
+  }
   // Create matrices from data
-  const matrices_from_data = Object.values(mydata).map((matrix) => {
-    return matrix.map((row) => {
-      return Float32Array.from(row);
-    });
-  });
+  const matrices_from_data = uncompressedData.data
 
   // Filter matrices based on selectedAngles
   const selectedMatrices = matrices_from_data.filter((matrix, index) => {
@@ -50,9 +37,9 @@ const Reconstruction = React.memo(function CircleArcs({
   }
   // let duration = new Date().valueOf() - start;
 
-  function handleClick() {
-    setMyTracker(mytracker + 1);
-  }
+  // function handleClick() {
+  //   setMyTracker(mytracker + 1);
+  // }
 
   return (
     <div className="background-left">

@@ -6,6 +6,7 @@ import CircleArcs from "./CircleArcs";
 import Intro from "./Intro";
 import HideRight from "./HideRight";
 import "./App.css";
+import pako from 'pako';
 
 function Slogan() {
   return (
@@ -22,6 +23,22 @@ function App() {
   const [angle, setAngle] = useState(-360); // same as 0 but 0 should not be selected on the first render.
   const [showIntro, setShowIntro] = useState(true);
   const [showOutro, setShowOutro] = useState(false);
+
+  const [testData, setTestData] = useState(null);
+
+  useEffect(() => {
+    fetch("ct_slice_69_feet.json.gzip")
+    .then((response) => response.arrayBuffer())
+    .then((buffer) => {
+      // Decompress the data using pako
+      const decompressedData = pako.inflate(new Uint8Array(buffer), {
+        to: "string",
+      });
+        return JSON.parse(decompressedData);
+      })
+      .then((data) => setTestData(data))
+      .catch((error) => console.error("There was an error!", error));
+  }, []);
 
 
   const [selectedAngles, setSelectedAngles] = useState({
@@ -154,7 +171,7 @@ function App() {
         </>
       )}
 
-      <Reconstruction selectedAngles={selectedAngles} level={level} />
+      <Reconstruction selectedAngles={selectedAngles} level={level} uncompressedData={testData} />
       <CircleArcs selectedAngles={selectedAngles} />
       <Scanner
         angle={angle}
