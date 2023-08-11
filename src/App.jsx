@@ -8,7 +8,7 @@ import Outro from "./Outro";
 import HideRight from "./HideRight";
 import "./App.css";
 import pako from "pako";
-import InfoModal from "./Infomodal";
+import InfoModal from "./InfoModal";
 
 function Slogan() {
   return (
@@ -192,11 +192,6 @@ function App() {
 
   return (
     <>
-      <button onClick={toggleModal} className="info-button">
-        ⓘ
-      </button>
-      <InfoModal show={showModal} close={toggleModal} />
-
       {showIntro && <Intro onStart={() => setShowIntro(false)} />}
       {level == 5 && showOutro && (
         <Outro
@@ -207,7 +202,15 @@ function App() {
         />
       )}
 
-      {!showIntro && <Slogan />}
+      {!showIntro && (
+        <>
+          <Slogan />
+          <button onClick={toggleModal} className="info-button">
+            ⓘ
+          </button>
+          <InfoModal show={showModal} close={toggleModal} />
+        </>
+      )}
       {showAngleSelectionHint && (
         <>
           <HideRight />

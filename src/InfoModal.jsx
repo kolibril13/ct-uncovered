@@ -7,7 +7,7 @@ const InfoModal = ({ show, close }) => {
           <p>A webapp to explore image reconstruction in a CT scanner.</p>
           <p>
             {" "}
-            Concept and programming: <br /> Jan-Hendrik Müller{" "}
+            Concept and implementation: <br /> Jan-Hendrik Müller{" "}
           </p>
           <p>
             {" "}
