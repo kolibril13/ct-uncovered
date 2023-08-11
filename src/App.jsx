@@ -32,20 +32,20 @@ function App() {
 
   const toggleModal = () => setShowModal(!showModal);
 
+
+  const getURL = (level) => {
+    switch (level) {
+      case 1: return "ct_slice_730_upper_legs.json.gzip";
+      case 2: return "ct_slice_1542_teeth.json.gzip";
+      case 3: return "ct_slice_1342_breast.json.gzip";
+      case 4: return "ct_slice_69_feet.json.gzip";
+      case 5:
+      default: return "ct_slice_730_upper_legs.json.gzip";
+    }
+  };
+  
   useEffect(() => {
-    let url = "ct_slice_730_upper_legs.json.gzip";
-    if (level === 2) {
-      url = "ct_slice_1542_teeth.json.gzip";
-    }
-    if (level === 3) {
-      url = "ct_slice_1342_breast.json.gzip";
-    }
-    if (level === 4) {
-      url = "ct_slice_69_feet.json.gzip";
-    }
-    if (level >= 5) {
-      url = "ct_slice_69_feet.json.gzip";
-    }
+    const url = getURL(level);
 
     fetch(url)
       .then((response) => response.arrayBuffer())
@@ -95,7 +95,6 @@ function App() {
         // only for debugging
         setShowOutro(true);
 
-        ///        feet                 head
         setSlices([false, true, false, false]);
         setSelectedAngles((prevAngles) => {
           const newAngles = {};
@@ -110,7 +109,6 @@ function App() {
         // only for debugging
         setShowOutro(true);
 
-        ///        feet                 head
         setSlices([false, false, false, true]);
         setSelectedAngles((prevAngles) => {
           const newAngles = {};
