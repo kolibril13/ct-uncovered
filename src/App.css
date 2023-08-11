@@ -12,7 +12,7 @@ html {
 
 .HideRight {
   background: rgba(255, 255, 255, 0.9);
-  z-index: 1000;
+  z-index: 10;
   position: absolute;
   top: 0;
   right: 0;
@@ -324,4 +324,8 @@ filter: drop-shadow(0 0 3em #BC31C9);
 
 .info-button:hover {
   background: #F2F2F2;
+}
+
+.modal-content{
+  z-index: 20;
 }

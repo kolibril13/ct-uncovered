@@ -1,9 +1,22 @@
 const InfoModal = ({ show, close }) => {
   return show ? (
-    <div className="modal">
+    <div className="intro">
       <div className="modal-content">
-        <button onClick={close} style={{ position: 'absolute', top: 0, left: 0, zIndex: 1000 }}>Close </button>
-        <p>hello world</p>
+        <div className="logo">
+          <h1>CT uncovered</h1>
+          <p>A webapp to explore image reconstruction in a CT scanner.</p>
+          <p>
+            {" "}
+            Concept and programming: <br /> Jan-Hendrik Müller{" "}
+          </p>
+          <p>
+            {" "}
+            Design: <br /> MOIN MOTION{" "}
+          </p>
+
+          <p> TODO: Add here another paragraph with some more infos </p>
+          <button onClick={close}>Close </button>
+        </div>
       </div>
     </div>
   ) : null;
