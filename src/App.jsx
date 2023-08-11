@@ -175,7 +175,7 @@ function App() {
     MessageOverScanner = () => (
       <>
         {/* <div className="message1"> */}
-        Aweseome! <br /> Seems like this is the part of a human body. <br />
+        Aweseome! <br /> Seems like this is a part of the human body. <br />
         Can you now find the plane on the right side? 👉
         {/* </div> */}
       </>
