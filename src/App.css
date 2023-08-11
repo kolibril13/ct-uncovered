@@ -26,14 +26,12 @@ html {
   position: absolute;
   top: 10px;
   left: 20px;
+
   font-family: roc-grotesk, sans-serif;
   font-style: normal;
   font-weight: 200;
-  /* font-size: 40px; */
-  /* line-height: 48px; */
   color: #2D2D51;
 }
-
 
 .intro {
   position: fixed;
@@ -317,9 +315,9 @@ filter: drop-shadow(0 0 3em #BC31C9);
   font-weight: 200;
   color: #2D2D51;
   background: white;
-  top: 0;
-  left: 0;
-  width: 100px;
+  top: 22px;
+  left: 240px;
+  width: 50px;
   height: 50px;
   z-index: 1000;
 }
