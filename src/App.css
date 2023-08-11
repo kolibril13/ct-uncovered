@@ -148,14 +148,14 @@ button:hover {
   /* transition: filter 300ms; */
 }
 
-.pointingFinger1{
+.pointingFinger1 {
   position: absolute;
   top: 30%;
   left: 22%;
   width: 120px;
 }
 
-.message1{
+.message1 {
   position: absolute;
   top: 28%;
   left: 11%;
@@ -307,4 +307,23 @@ filter: drop-shadow(0 0 3em #BC31C9);
   left: 50%;
   transform: translate(-50%, 0%);
   font-size: 20px;
+}
+
+
+.info-button {
+  position: absolute;
+  font-family: roc-grotesk, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  color: #2D2D51;
+  background: white;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 50px;
+  z-index: 1000;
+}
+
+.info-button:hover {
+  background: #F2F2F2;
 }

@@ -8,6 +8,7 @@ import Outro from "./Outro";
 import HideRight from "./HideRight";
 import "./App.css";
 import pako from "pako";
+import InfoModal from "./Infomodal";
 
 function Slogan() {
   return (
@@ -26,6 +27,11 @@ function App() {
   const [showOutro, setShowOutro] = useState(false);
 
   const [testData, setTestData] = useState(null);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => setShowModal(!showModal);
+
   useEffect(() => {
     let url = "ct_slice_730_upper_legs.json.gzip";
     if (level === 2) {
@@ -186,6 +192,11 @@ function App() {
 
   return (
     <>
+      <button onClick={toggleModal} className="info-button">
+        ⓘ
+      </button>
+      <InfoModal show={showModal} close={toggleModal} />
+
       {showIntro && <Intro onStart={() => setShowIntro(false)} />}
       {level == 5 && showOutro && (
         <Outro
