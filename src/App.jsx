@@ -24,7 +24,6 @@ function App() {
   const [prevAngle, setPrevAngle] = useState(null); // For the reference angle
   const [angle, setAngle] = useState(-360); // same as 0 but 0 should not be selected on the first render.
   const [showIntro, setShowIntro] = useState(true);
-  const [showOutro, setShowOutro] = useState(true);
 
   const [testData, setTestData] = useState(null);
 
@@ -47,6 +46,8 @@ function App() {
         return "ct_slice_730_upper_legs.json.gzip";
     }
   };
+
+  console.log("level", level);
 
   useEffect(() => {
     const url = getURL(level);
@@ -106,13 +107,13 @@ function App() {
   const [prevLevel, setPrevLevel] = useState(level);
 
   useEffect(() => {
-    if (level > prevLevel) {
-      setSlices(levelSlices[level - 1] || []);
-      setSelectedAngles(clearAngles);
-      setPrevAngle(null);
-      setAngle(-360);
-      setPrevLevel(level); // Update the previous level
-    }
+
+    setSlices(levelSlices[level - 1] || []);
+    setSelectedAngles(clearAngles);
+    setPrevAngle(null);
+    setAngle(-360);
+    setPrevLevel(level); // Update the previous level
+
   }, [level]);
 
   const showAngleSelectionHint =
@@ -161,11 +162,10 @@ function App() {
   return (
     <>
       {showIntro && <Intro onStart={() => setShowIntro(false)} />}
-      {level == 5 && showOutro && (
+      {level == 5 && (
         <Outro
           onStart={() => {
             setLevel(1);
-            setShowOutro(false);
           }}
         />
       )}
