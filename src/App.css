@@ -370,6 +370,10 @@ filter: drop-shadow(0 0 3em #BC31C9);
     .logo h1 {
       font-size: 40px; /* Reduce font size */
     }
+
+    h1 {
+      font-size: 20px; /* Reduce font size */
+    }
   
     button {
       width: 100px; /* Reduce button size */
@@ -378,9 +382,12 @@ filter: drop-shadow(0 0 3em #BC31C9);
     }
   
     .texthint {
-      font-size: 12px; /* Reduce texthint fontsize */
+      font-size: 10px; /* Reduce texthint fontsize */
     }
   
+    .info-button {
+      display: none;
+    }
 
     /* .background-right,
     .background-left {
