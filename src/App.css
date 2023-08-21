@@ -139,6 +139,7 @@ button:hover {
 .scanner-image {
   width: 100%;
   cursor: pointer;
+  z-index: 5;
   /* position: absolute; */
   /* left: 50%; */
 
