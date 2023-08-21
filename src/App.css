@@ -356,3 +356,38 @@ filter: drop-shadow(0 0 3em #BC31C9);
     margin: auto;
   }
   
+
+  @media only screen and (max-width: 768px) {
+    .intro {
+      padding: 10%;
+    }
+  
+    .logo {
+      width: 300px; /* Reduce the logo width */
+      top: 25%; /* Adjust positioning */
+    }
+  
+    .logo h1 {
+      font-size: 40px; /* Reduce font size */
+    }
+  
+    button {
+      width: 100px; /* Reduce button size */
+      height: 40px;
+      font-size: 20px;
+    }
+  
+    .texthint {
+      font-size: 12px; /* Reduce texthint fontsize */
+    }
+  
+
+    /* .background-right,
+    .background-left {
+      width: 100%;
+      height: 50%;
+    } */
+  
+    /* Additional styles to adjust the size and layout for mobile as needed */
+  }
+  

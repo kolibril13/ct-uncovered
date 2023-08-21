@@ -134,7 +134,7 @@ function App() {
 
   if (showAngleSelectionHint) {
     MessageOverScanner = () => (
-      <div>
+      <div className="texthint">
         Select angles here <br /> 👇
       </div>
     );
@@ -143,18 +143,18 @@ function App() {
   if (allAnglesSelectedHint) {
     MessageOverScanner = () => (
       <>
-        {/* <div className="message1"> */}
+      <div className="texthint">
         Aweseome! <br /> Seems like this is a part of the human body. <br />
         Can you now find the plane on the right side? 👉
-        {/* </div> */}
+        </div>
       </>
     );
   }
 
   if (startLevel2Hint) {
     MessageOverScanner = () => (
-      <div>
-        Well done! <br /> Now go on with the next slice!
+      <div className="texthint">
+        Well done! <br /> Now go on with the next slice! <br /> 👇
       </div>
     );
   }
