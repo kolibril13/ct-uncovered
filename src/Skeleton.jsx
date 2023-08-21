@@ -14,6 +14,30 @@ function CrossComponent() {
 function Skeleton({ slices, level, setLevel }) {
   const [checks, setChecks] = useState([]);
   const [crosses, setCrosses] = useState([]);
+  const [touchUsed, setTouchUsed] = useState(false);
+
+  const handleEvent = (index) => {
+    if (slices[index]) {
+      addCheck();
+      setLevel(level + 1);
+    } else {
+      addCross();
+    }
+  };
+
+  const handleMouseDown = (index) => {
+    if (!touchUsed) {
+      handleEvent(index);
+    }
+  };
+
+  const handleTouchStart = () => {
+    setTouchUsed(true);
+  };
+
+  const handleTouchEnd = (index) => {
+    handleEvent(index);
+  };
 
   const addCheck = () => {
     const id = new Date().getTime();
@@ -31,15 +55,6 @@ function Skeleton({ slices, level, setLevel }) {
     }, 1000);
   };
 
-  const handleClick = (index) => {
-    if (slices[index]) {
-      addCheck();
-      setLevel(level + 1);
-    } else {
-      addCross();
-    }
-  };
-
   return (
     <div className="background-right">
       <div className="skeleton-canvas">
@@ -48,32 +63,35 @@ function Skeleton({ slices, level, setLevel }) {
           src={ring}
           className="ring ring1 noselect"
           draggable="false"
-          onClick={() => handleClick(0)}
-          onTouchStart={() => handleClick(0)}
+          onMouseDown={() => handleMouseDown(0)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={() => handleTouchEnd(0)}
         />
         <img
           src={ring}
           className="ring ring2 noselect"
           draggable="false"
-          onClick={() => handleClick(1)}
-          onTouchStart={() => handleClick(1)}
+          onMouseDown={() => handleMouseDown(1)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={() => handleTouchEnd(1)}
         />
         <img
           src={ring}
           className="ring ring3 noselect"
           draggable="false"
-          onClick={() => handleClick(2)}
-          onTouchStart={() => handleClick(2)}
+          onMouseDown={() => handleMouseDown(2)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={() => handleTouchEnd(2)}
         />
         <img
           src={ring}
           className="ring ring4 noselect"
           draggable="false"
-          onClick={() => handleClick(3)}
-          onTouchStart={() => handleClick(3)}
+          onMouseDown={() => handleMouseDown(3)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={() => handleTouchEnd(3)}
         />
       </div>
-      {/* </div> */}
       {checks.map((id) => (
         <CheckComponent key={id} />
       ))}
