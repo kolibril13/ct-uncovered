@@ -311,7 +311,8 @@ filter: drop-shadow(0 0 3em #BC31C9);
 
 @media only screen and (max-width: 768px) {
   .intro {
-    padding: 10%;
+    top: 200px;
+    padding: 40%;
   }
 
   .logo {
