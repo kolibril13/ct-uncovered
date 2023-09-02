@@ -5,11 +5,19 @@ const InfoModal = ({ show, close }) => {
         {/* <div className="logo right-aligned "> */}
         <h1>CT uncovered</h1>
         <p>
-          A webapp to explore image reconstruction in a CT scanner. <br></br>
-          Select angles on the left side with the mouse, and then try to find
-          the corresponding slice on the right.
+          This is a webapp to explore image reconstruction in a CT scanner.{" "}
+          <br></br>
+          Select angles on the left side, and then try to find the corresponding
+          slice on the right.
         </p>
 
+        <p>
+          {" "}
+          This project was made for the Summer of Math Exposition 2023 by Jan-Hendrik Müller and the code is available on{" "}
+          <a href="https://github.com/kolibril13/ct-uncovered">
+            GitHub
+          </a>{" "}.
+        </p>
         <p>
           {" "}
           Learn more about CT scans in this thread: <br />{" "}
@@ -18,19 +26,7 @@ const InfoModal = ({ show, close }) => {
           </a>{" "}
         </p>
 
-        <p>
-          {" "}
-          Concept and implementation: <br /> Jan-Hendrik Müller <br /> <br />
-          Design: <br /> MOIN MOTION
-        </p>
 
-        <p>
-          {" "}
-          This is an Open Source Project, you can find the whole code here:{" "}
-          <a href="https://github.com/kolibril13/ct-uncovered">
-            https://github.com/kolibril13/ct-uncovered
-          </a>{" "}
-        </p>
         <button onClick={close}>Close </button>
       </div>
       {/* </div> */}
