@@ -19,7 +19,7 @@ const InfoModal = ({ show, close }) => {
           the source code is available on{" "}
           <a href="https://github.com/kolibril13/ct-uncovered">GitHub</a> .
         </p>
-        <p> Learn more about CT scans in my this thread:</p>
+        <p> Learn more about CT scans in this thread:</p>
 
         <Tweet id="1696554901977899140" />
         <button className="modalbutton" onClick={close}>
