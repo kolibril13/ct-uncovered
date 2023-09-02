@@ -281,19 +281,17 @@ filter: drop-shadow(0 0 3em #BC31C9);
 .modal-content {
   z-index: 20;
   border: 5px solid #2D2D51;
-  /* height: 200px; */
   width: 500px;
   padding: 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
   text-align: left;
   background-color: #ffffff;
   position: absolute;
   top: 30%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -30%);
   font-family: roc-grotesk, sans-serif;
   font-style: normal;
   font-weight: 200;
@@ -303,7 +301,7 @@ filter: drop-shadow(0 0 3em #BC31C9);
   text-align: center;
 }
 
-.modal-content button {
+.modal-content .modalbutton   {
   display: block;
   margin: auto;
 }

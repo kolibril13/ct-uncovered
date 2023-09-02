@@ -1,3 +1,5 @@
+import { Tweet } from "react-tweet";
+
 const InfoModal = ({ show, close }) => {
   return show ? (
     <div className="intro">
@@ -13,23 +15,17 @@ const InfoModal = ({ show, close }) => {
 
         <p>
           {" "}
-          This project was made for the Summer of Math Exposition 2023 by Jan-Hendrik Müller and the code is available on{" "}
-          <a href="https://github.com/kolibril13/ct-uncovered">
-            GitHub
-          </a>{" "}.
+          This project was made for the Summer of Math Exposition 2023 by and
+          the source code is available on{" "}
+          <a href="https://github.com/kolibril13/ct-uncovered">GitHub</a> .
         </p>
-        <p>
-          {" "}
-          Learn more about CT scans in this thread: <br />{" "}
-          <a href="https://twitter.com/kolibril13/status/1696554901977899140">
-            https://twitter.com/kolibril13/status/1696554901977899140
-          </a>{" "}
-        </p>
+        <p> Learn more about CT scans in my this thread:</p>
 
-
-        <button onClick={close}>Close </button>
+        <Tweet id="1696554901977899140" />
+        <button className="modalbutton" onClick={close}>
+          Close{" "}
+        </button>
       </div>
-      {/* </div> */}
     </div>
   ) : null;
 };
