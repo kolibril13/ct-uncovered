@@ -1,13 +1,14 @@
 import mygif from "./assets/demo.gif";
+import { Tweet } from "react-tweet";
 
 function Outro({ onStart }) {
   return (
     <div className="intro">
       <div className="logo">
         <h1>Well done!</h1>
-        <p>If you liked this webapp, feel free to retweet this announcement tweet: <a href="https://twitter.com/kolibril13/status/1696554938225053714">https://twitter.com/kolibril13/status/1696554938225053714</a>   </p>
         <button onClick={onStart}>Restart</button>
-
+        <p>If you liked this webapp, you can learn more here: </p>
+        <Tweet id="1696554901977899140" />
       </div>
     </div>
   );
