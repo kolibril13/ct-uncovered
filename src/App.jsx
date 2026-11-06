@@ -144,7 +144,7 @@ function App() {
     MessageOverScanner = () => (
       <>
       <div className="texthint">
-        Aweseome! <br /> Seems like this is a part of the human body. <br />
+        Awesome! <br /> Seems like this is a part of the human body. <br />
         Can you now find the plane on the right side? 👉
         </div>
       </>

@@ -103,6 +103,7 @@ const Scanner = ({
     const initialAngle = calculateRotation(e);
     setAngle(initialAngle); // Update the angle at the beginning of the drag
     setPrevAngle(initialAngle); // Update the prev angle at the beginning of the drag
+    document.body.classList.add("scanner-dragging");
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
   };
@@ -115,6 +116,7 @@ const Scanner = ({
   };
 
   const handleMouseUp = () => {
+    document.body.classList.remove("scanner-dragging");
     document.removeEventListener("mousemove", handleMouseMove);
     document.removeEventListener("mouseup", handleMouseUp);
   };
@@ -144,6 +146,7 @@ const Scanner = ({
   useEffect(() => {
     return () => {
       // Remove event listeners when the component is unmounted
+      document.body.classList.remove("scanner-dragging");
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("touchmove", handleTouchMove);

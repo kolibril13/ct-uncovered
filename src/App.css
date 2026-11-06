@@ -144,13 +144,19 @@ button:hover {
 .scanner-image {
   display: block;
   width: 100%;
-  cursor: pointer;
+  cursor: grab;
   z-index: 5;
   /* position: absolute; */
   /* left: 50%; */
 
   /* will-change: filter; */
   /* transition: filter 300ms; */
+}
+
+/* set on <body> while rotating, so the cursor stays "grabbing" even outside the scanner */
+.scanner-dragging,
+.scanner-dragging * {
+  cursor: grabbing !important;
 }
 
 .pointingFinger1 {
