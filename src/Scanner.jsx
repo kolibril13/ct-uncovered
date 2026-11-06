@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import scanner from "./assets/scanner.png";
+import InteractionHint, { useTimedHint } from "./InteractionHint";
 
 const Scanner = ({
   angle,
@@ -9,8 +10,10 @@ const Scanner = ({
   selectedAngles,
   setSelectedAngles,
   MessageOverScanner,
+  showHint,
 }) => {
   const imageRef = useRef(null);
+  const [hintVisible, dismissHint] = useTimedHint(showHint);
 
   const calculateRotation = (e) => {
     //✅✅✅
@@ -96,6 +99,7 @@ const Scanner = ({
   }, [angle]);
 
   const handleMouseDown = (e) => {
+    dismissHint();
     const initialAngle = calculateRotation(e);
     setAngle(initialAngle); // Update the angle at the beginning of the drag
     setPrevAngle(initialAngle); // Update the prev angle at the beginning of the drag
@@ -118,6 +122,7 @@ const Scanner = ({
   // Touch events for smartphone support
   const handleTouchStart = (e) => {
     e.preventDefault();
+    dismissHint();
     const initialAngle = calculateRotation(e.touches[0]);
     setAngle(initialAngle);
     setPrevAngle(initialAngle);
@@ -150,18 +155,21 @@ const Scanner = ({
     <>
       <div className="background-left">
         <div className="container-for-scanner">
-          <img
-            className="scanner-image noselect"
-            ref={imageRef}
-            src={scanner}
-            alt="scanner"
-            style={{
-              transform: `rotate(${angle}deg)`,
-            }}
-            onMouseDown={handleMouseDown}
-            onTouchStart={handleTouchStart}
-            draggable={false}
-          />
+          <div className={`scanner-wrapper ${hintVisible ? "hint-pulse" : ""}`}>
+            <img
+              className="scanner-image noselect"
+              ref={imageRef}
+              src={scanner}
+              alt="scanner"
+              style={{
+                transform: `rotate(${angle}deg)`,
+              }}
+              onMouseDown={handleMouseDown}
+              onTouchStart={handleTouchStart}
+              draggable={false}
+            />
+            <InteractionHint visible={hintVisible} drag />
+          </div>
 
           <div className="top-scanner-title-box">
             <div className="scanner-title">

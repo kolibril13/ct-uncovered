@@ -136,7 +136,13 @@ button:hover {
 }
 
 
+.scanner-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .scanner-image {
+  display: block;
   width: 100%;
   cursor: pointer;
   z-index: 5;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import skeleton from "./assets/skeleton.svg";
 import ring from "./assets/gradient-ring.svg";
 import "./Skeleton.css";
+import InteractionHint, { useTimedHint } from "./InteractionHint";
 
 function CheckComponent() {
   return <div className="check-mark">✅</div>;
@@ -11,7 +12,8 @@ function CrossComponent() {
   return <div className="cross-mark">❌</div>;
 }
 
-function Skeleton({ slices, level, setLevel }) {
+function Skeleton({ slices, level, setLevel, showHint }) {
+  const [hintVisible, dismissHint] = useTimedHint(showHint);
   const [checks, setChecks] = useState([]);
   const [crosses, setCrosses] = useState([]);
   const [touchUsed, setTouchUsed] = useState(false);
@@ -56,8 +58,12 @@ function Skeleton({ slices, level, setLevel }) {
   };
 
   return (
-    <div className="background-right">
-      <div className="skeleton-canvas">
+    <div
+      className="background-right"
+      onMouseDown={dismissHint}
+      onTouchStart={dismissHint}
+    >
+      <div className={`skeleton-canvas ${hintVisible ? "hint-pulse" : ""}`}>
         <img src={skeleton} className="skeletonSvg noselect" draggable="false" />
         <img
           src={ring}
@@ -92,6 +98,7 @@ function Skeleton({ slices, level, setLevel }) {
           onTouchEnd={() => handleTouchEnd(3)}
         />
       </div>
+      <InteractionHint visible={hintVisible} />
       {checks.map((id) => (
         <CheckComponent key={id} />
       ))}

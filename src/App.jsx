@@ -199,8 +199,14 @@ function App() {
         selectedAngles={selectedAngles}
         setSelectedAngles={setSelectedAngles}
         MessageOverScanner={MessageOverScanner}
+        showHint={showAngleSelectionHint}
       />
-      <Skeleton slices={slices} level={level} setLevel={setLevel} />
+      <Skeleton
+        slices={slices}
+        level={level}
+        setLevel={setLevel}
+        showHint={allAnglesSelectedHint}
+      />
     </>
   );
 }
