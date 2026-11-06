@@ -7,7 +7,7 @@ import Intro from "./Intro";
 import Outro from "./Outro";
 import HideRight from "./HideRight";
 import "./App.css";
-import pako from "pako";
+import { inflate } from "pako";
 import InfoModal from "./InfoModal";
 
 function Slogan() {
@@ -56,9 +56,9 @@ function App() {
       .then((response) => response.arrayBuffer())
       .then((buffer) => {
         // Decompress the data using pako
-        const decompressedData = pako.inflate(new Uint8Array(buffer), {
-          to: "string",
-        });
+        const decompressedData = new TextDecoder().decode(
+          inflate(new Uint8Array(buffer))
+        );
         return JSON.parse(decompressedData);
       })
       .then((data) => setTestData(data))
